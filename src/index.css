@@ -1,13 +1,232 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Kanit&family=Montserrat&family=Roboto&display=swap");
+/* 
+font-family: 'Kanit', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Roboto', sans-serif; 
+*/
+:root {
+  --blue: rgba(87, 132, 186, 1);
+  --dark-blue: rgb(58, 108, 170);
+  --light-blue: rgba(230, 237, 246, 1);
+  --pink: rgba(244, 207, 223, 1);
+  --light-white: rgba(249, 249, 249, 1);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+html * {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+}
+
+body {
+  background-color: var(--light-blue);
+}
+
+/* utils */
+
+.rounded-5px {
+  border-radius: 5px;
+}
+
+.rounded-7px {
+  border-radius: 7px;
+}
+
+.rounded-10px {
+  border-radius: 10px;
+}
+
+.font-family-roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.font-family-monsterrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.font-family-kanit {
+  font-family: "Kanit", sans-serif;
+}
+
+.bg-blue {
+  background-color: var(--light-blue);
+}
+
+.bg-primary-blue {
+  background-color: var(--blue);
+}
+
+a {
+  text-decoration: none;
+}
+
+.text-black {
+  color: black !important;
+}
+
+.text-white {
+  color: white;
+}
+
+.fill-white {
+  fill: white;
+}
+
+.fill-black {
+  fill: black;
+}
+
+.touchable {
+  cursor: pointer;
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* circular percentage */
+
+.single-chart {
+  display: flex;
+  justify-content: center;
+}
+
+.circular-chart {
+  display: block;
+  max-width: 3rem;
+  /* max-width: 100%; */
+  /* max-height: 250px; */
+  max-height: 250px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.circular-chart.blue .circle {
+  stroke: var(--blue);
+}
+
+.percentage {
+  fill: #666;
+  font-family: sans-serif;
+  font-size: 0.7em;
+  text-anchor: middle;
+}
+
+/* page title */
+main.activity h1 {
+  font-family: Montserrat;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* truncate inside table */
+.td-truncate {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 1px;
+}
+
+/* button register */
+.btn-register {
+  background-color: rgba(87, 186, 97, 1);
+  font-family: Montserrat;
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 500;
+  color: rgba(254, 254, 254, 1);
+  outline: none;
+  border: none;
+  padding: 8px 15px 8px 15px;
+  border-radius: 15px;
+}
+
+@media (min-width: 1440px) {
+  .circular-chart {
+    max-height: 3.5rem;
+  }
+
+  .circle-bg {
+    stroke-width: 3.8;
+  }
+
+  .circle {
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+
+  @keyframes progress {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+  }
+
+  .circular-chart.blue .circle {
+    stroke: var(--blue);
+  }
+
+  .percentage {
+    fill: #666;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    text-anchor: middle;
+  }
+}
+
+/* scrollbar style */
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.notification-container ::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 10px;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: var(--blue);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: var(--blue);
 }

@@ -92,7 +92,7 @@ class Login extends Component {
               className="btn-login"
               onClick={() => this.auth()}
             >
-              "Login"
+              Login
             </button>
             <div className="btn-google" tabIndex={2}>
               <img
