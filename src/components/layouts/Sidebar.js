@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
+import { connect } from "react-redux";
+
 import "./Sidebar.css";
 
-export default function Sidebar(props) {
+function Sidebar(props) {
   const [show, setShow] = useState(false);
   const isDashboard = useRouteMatch("/dashboard").isExact;
   const isActivity = useRouteMatch("/dashboard/activity");
+  const { user } = props.userReducer;
   return (
     <>
       <nav className="navbar sticky-top bg-primary-blue d-block d-md-none">
@@ -139,3 +142,11 @@ export default function Sidebar(props) {
     </>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    userReducer: state.userReducer,
+  };
+};
+
+const ConnectedSidebar = connect(mapStateToProps)(Sidebar);
+export default ConnectedSidebar;
