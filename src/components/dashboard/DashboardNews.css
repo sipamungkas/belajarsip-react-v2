@@ -1,0 +1,59 @@
+section.news .card img {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+section.news .card .carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: none;
+}
+
+section.news .card .carousel-indicators button {
+  background-color: white;
+  opacity: 0.9;
+  border: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: all 0.7s ease;
+}
+
+section.news .card .carousel-indicators .active {
+  opacity: 1;
+  width: 25px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--blue);
+}
+
+@media (min-width: 992px) {
+  section.news {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .carousel-caption {
+    background: linear-gradient(0deg, #000000 -15.5%, rgba(0, 0, 0, 0) 100%);
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-bottom: 4rem;
+    padding-top: 1rem;
+    border-radius: 10px;
+  }
+
+  .carousel-caption h5 {
+    font-family: Montserrat;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 2rem;
+  }
+}

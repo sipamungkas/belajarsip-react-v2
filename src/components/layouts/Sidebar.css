@@ -1,0 +1,319 @@
+.overlay-bg-black {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.overlay-bg-black.show-overlay {
+  width: 100vw;
+}
+
+aside.left-sidebar {
+  padding-top: 48px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 0%;
+  background-color: var(--blue);
+  z-index: 1024;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+aside.left-sidebar.show-sidebar {
+  width: 75%;
+}
+
+aside.left-sidebar .avatar-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+aside.left-sidebar .avatar-container {
+  padding-top: 8%;
+  padding-left: 5%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+aside.left-sidebar .avatar-container img {
+  width: 30%;
+  min-width: 4.5rem;
+  max-height: 4.5rem;
+  margin-right: 5%;
+}
+
+aside.left-sidebar .avatar-container .avatar-name {
+  font-family: Roboto;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+aside.left-sidebar .avatar-container .avatar-status {
+  font-family: Roboto;
+}
+
+aside.left-sidebar .menu-container {
+  margin-top: 24%;
+}
+
+aside.left-sidebar .menu-container .menu-link {
+  padding-left: 10%;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+aside.left-sidebar.show-sidebar .menu-link {
+  opacity: 1;
+}
+
+aside.left-sidebar .menu-container svg {
+  height: 1.7rem;
+  width: 1.7rem;
+  margin-right: 5%;
+}
+
+aside.left-sidebar .menu-container .menu-link {
+  fill: white;
+  font-size: 1rem;
+  color: white;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--blue);
+  margin-top: -7%;
+  padding: 5% 5% 12% 5%;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+aside.left-sidebar .menu-container .empty-menu-link {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  position: relative;
+  font-family: Montserrat;
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 600;
+  color: white;
+  margin-top: -7%;
+  padding: 10% 15% 15% 15%;
+  height: 15%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: var(--blue);
+}
+
+aside.left-sidebar .menu-container .menu-link:hover,
+aside.left-sidebar .menu-container .menu-link.active {
+  fill: black;
+  background-color: white;
+  color: black;
+}
+
+@media (min-width: 576px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .overlay-bg-black {
+    background-color: transparent;
+    position: absolute;
+    padding: 2% 1%;
+    height: 100vh;
+    width: 25%;
+    border-radius: 10px;
+    z-index: 1;
+  }
+
+  .overlay-bg-black.show-overlay {
+    height: 100vh;
+    width: 25%;
+  }
+
+  aside.left-sidebar {
+    padding-top: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--blue);
+    z-index: 1;
+    transition: all 0.5s ease;
+    border-radius: 10px;
+  }
+
+  aside.left-sidebar.show-sidebar {
+    width: 100%;
+  }
+
+  aside.left-sidebar .avatar-container {
+    padding-top: 3.5rem;
+    padding-left: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  aside.left-sidebar .avatar-container svg#sidebar-notification {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+  }
+
+  aside.left-sidebar .avatar-container img {
+    width: 55%;
+    max-height: 8rem;
+    margin-right: 5%;
+  }
+
+  aside.left-sidebar .avatar-container .avatar-name {
+    font-family: Roboto;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+  }
+
+  aside.left-sidebar .avatar-container .avatar-status {
+    font-size: 0.8rem;
+  }
+
+  aside.left-sidebar .menu-container .menu-link {
+    opacity: 1;
+    padding-left: 1.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .overlay-bg-black {
+    background-color: transparent;
+    position: absolute;
+    padding: 2% 1%;
+    height: 100vh;
+    width: 22%;
+    border-radius: 10px;
+  }
+
+  .overlay-bg-black.show-overlay {
+    height: 100vh;
+    width: 22%;
+  }
+
+  aside.left-sidebar {
+    padding-top: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--blue);
+    z-index: 1;
+    transition: all 0.5s ease;
+    border-radius: 10px;
+  }
+
+  aside.left-sidebar.show-sidebar {
+    width: 100%;
+  }
+
+  aside.left-sidebar .avatar-container {
+    padding-top: 3.5rem;
+    padding-left: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  aside.left-sidebar .avatar-container .avatar-name {
+    font-size: 1.4rem;
+  }
+
+  aside.left-sidebar .menu-container .menu-link {
+    font-size: 1.1rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+/* 1440 up devices */
+@media (min-width: 1440px) {
+  .overlay-bg-black {
+    background-color: transparent;
+    position: absolute;
+    padding: 2% 1%;
+    height: 100vh;
+    width: 26%;
+    border-radius: 10px;
+  }
+  .overlay-bg-black.show-overlay {
+    height: 100vh;
+    width: 26%;
+  }
+
+  aside.left-sidebar .avatar-container {
+    margin-top: 10%;
+    padding-left: 15%;
+  }
+
+  aside.left-sidebar .avatar-container img {
+    width: 30%;
+    min-width: 10rem;
+    max-height: 15rem;
+  }
+
+  aside.left-sidebar .avatar-container .avatar-name {
+    font-family: Roboto;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  aside.left-sidebar .avatar-container .avatar-status {
+    font-family: Roboto;
+    font-size: 1.4rem;
+  }
+
+  aside.left-sidebar .menu-container {
+    margin-top: 24%;
+  }
+
+  aside.left-sidebar .menu-container .menu-link {
+    padding-left: 10%;
+    overflow: hidden;
+    opacity: 1;
+    transition: all 0.6s ease;
+  }
+
+  aside.left-sidebar.show-sidebar .menu-link {
+    opacity: 1;
+  }
+
+  aside.left-sidebar .menu-container svg {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 10%;
+  }
+
+  aside.left-sidebar .menu-container .menu-link {
+    font-size: 1.5rem;
+  }
+}

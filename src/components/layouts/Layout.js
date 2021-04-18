@@ -7,17 +7,17 @@ import Backdrop from "../backdrop/Backdrop";
 
 function Layout(props) {
   const location = useLocation();
-  const hidePath = [/register/, /login/, /forgot/, /reset-password/, /\//];
+  const hidePath = [/register/, /login/, /forgot/, /reset-password/];
   const isMatch = hidePath.some((path) => path.test(location.pathname));
 
   return (
     <div className={classes.layout}>
       {!isMatch && <Sidebar />}
       <main className={classes.main}>{props.children}</main>
-      {!isMatch && (
+      {/* {!isMatch && (
         <Notification onNotificationClick={() => {}} addClass={"dashboard"} />
-      )}
-      {!isMatch && <Backdrop />}
+      )} */}
+      {/* {!isMatch && <Backdrop />} */}
     </div>
   );
 }
