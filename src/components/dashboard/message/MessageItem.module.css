@@ -1,0 +1,67 @@
+.message {
+  margin-top: 3%;
+}
+
+.image {
+  margin-right: 5%;
+  width: 3rem;
+}
+
+.message {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.sender-name {
+  font-family: Kanit;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+}
+.message-content,
+.message-timestamp {
+  font-family: Kanit;
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 400;
+  color: rgba(120, 120, 120, 1);
+}
+
+.message-timestamp {
+  position: absolute;
+  right: 0;
+}
+
+/* .sender-name,
+  .message-content {
+    width: 8rem;
+  } */
+
+.message-timestamp {
+  max-width: fit-content;
+}
+
+.message-body {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+@media (min-width: 1440px) {
+  .message {
+    margin-top: 5%;
+  }
+
+  .sender-name {
+    font-size: 1.7rem;
+    width: 90%;
+  }
+  .message-content,
+  .message-timestamp {
+    font-size: 1.4rem;
+  }
+}
