@@ -1,7 +1,7 @@
 import SendOTP from "./SendOTP";
 import OTPVerification from "./OTPVerification";
 import NewPassword from "./NewPassword";
-import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function Forgot(props) {
   const location = useLocation();
