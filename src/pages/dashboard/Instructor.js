@@ -17,6 +17,11 @@ function Instructor(props) {
       duration: "50 minutes",
       categoryIcon: "/assets/images/icons/finance-category.svg",
     },
+    {
+      title: "Trigonometry",
+      duration: "50 minutes",
+      categoryIcon: "/assets/images/icons/finance-category.svg",
+    },
   ];
   return (
     <>
