@@ -65,7 +65,7 @@ class OTPVerification extends Component {
               </div>
             </div>
             <div className="btn-container">
-              <Link to={"/reset-password/3"}>
+              <Link to={"/forgot/new-password"}>
                 <div className="btn-login">Send</div>
               </Link>
             </div>

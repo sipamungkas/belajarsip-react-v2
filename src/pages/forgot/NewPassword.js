@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import ResetLeftSide from "../../components/forgot/ResetLeftSide";
 import RightResetOverlay from "../../components/forgot/ResetRightOverlay";
-import InputForm from "./InputForm";
+import InputForm from "../../components/inputForm/InputForm";
 
 class NewPassword extends Component {
   constructor() {

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./ResetPassword.css";
-import ResetLeftSide from "./ResetLeftSide";
+import ResetLeftSide from "../../components/forgot/ResetLeftSide";
 
 class SendOTP extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       activationCode: "",
     };
@@ -44,7 +44,7 @@ class SendOTP extends Component {
               <label htmlFor="username">Username or Email</label>
             </div>
             <div className="btn-container">
-              <Link to={"/reset-password/2"}>
+              <Link to={"/forgot/otp-verification"}>
                 <div className="btn-login">Send</div>
               </Link>
             </div>

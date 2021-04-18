@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
-import InputForm from "../../components/InputForm";
+import InputForm from "../../components/inputForm/InputForm";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -75,7 +75,7 @@ class Login extends Component {
               }
               additional={
                 <Link
-                  to="/reset-password"
+                  to="/forgot"
                   tabIndex={2}
                   className="col-12 forgot-password"
                 >

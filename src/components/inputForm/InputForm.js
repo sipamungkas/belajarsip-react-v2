@@ -27,7 +27,7 @@ function InputFormPassword(props) {
         <label htmlFor={forId}>{label}</label>
         <img
           className="eye-icon"
-          src={`assets/images/icons/${
+          src={`/assets/images/icons/${
             show ? "eye-slash-icon.svg" : "eye-icon.svg"
           }`}
           alt="eye icon"
