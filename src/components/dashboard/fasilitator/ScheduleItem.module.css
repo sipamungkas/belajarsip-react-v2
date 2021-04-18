@@ -1,0 +1,84 @@
+/* fasilitator */
+.item {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem;
+  height: 4rem;
+  padding: 0.5rem;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow-y: hidden;
+}
+
+.course-time {
+  font-family: Roboto;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  flex: 2;
+}
+
+.course-title {
+  flex: 4;
+  font-family: Montserrat;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  text-align: left;
+}
+
+.student-count {
+  font-family: Montserrat;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 500;
+  flex: 2;
+  text-align: center;
+}
+
+.add-new-task {
+  text-align: center;
+  margin: 1.2rem;
+}
+
+@media (min-width: 992px) {
+  /* fasilitator */
+  .item {
+    height: 4.5rem;
+  }
+
+  .course-time {
+    font-size: 1.1rem;
+  }
+
+  .course-title {
+    font-size: 1.2rem;
+  }
+
+  .student-count {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  /* fasilitator */
+  .item {
+    height: 5rem;
+  }
+
+  .course-time {
+    font-size: 1.3rem;
+  }
+
+  .course-title {
+    font-size: 1.6rem;
+  }
+
+  .student-count {
+    font-size: 1.6rem;
+  }
+}

@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 
-import classes from "./Layout.module.css";
+import "./Layout.css";
 import Sidebar from "./Sidebar";
 import Notification from "../notification/Notification";
 import Backdrop from "../backdrop/Backdrop";
@@ -11,9 +11,9 @@ function Layout(props) {
   const isMatch = hidePath.some((path) => path.test(location.pathname));
 
   return (
-    <div className={classes.layout}>
+    <div>
       {!isMatch && <Sidebar />}
-      <main className={classes.main}>{props.children}</main>
+      <main>{props.children}</main>
       {/* {!isMatch && (
         <Notification onNotificationClick={() => {}} addClass={"dashboard"} />
       )} */}

@@ -1,20 +1,20 @@
-main.dashboard {
+main {
   height: 100%;
   padding: 2% 1%;
 }
 
-main.dashboard section .card {
+main section .card {
   border-radius: 10px;
 }
 
-main.dashboard section .card .title {
+main section .card .title {
   font-size: 1.2rem;
   font-style: normal;
   font-weight: 700;
   padding: 0.6rem 1rem;
 }
 
-main.dashboard .fab-message {
+main .fab-message {
   display: none;
 }
 
@@ -23,7 +23,7 @@ main.dashboard .fab-message {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  main.dashboard {
+  main {
     position: absolute;
     top: 0;
     right: 0;
@@ -33,7 +33,7 @@ main.dashboard .fab-message {
     z-index: 2;
   }
 
-  main.dashboard .fab-message {
+  main .fab-message {
     display: block;
     position: fixed;
     bottom: 1rem;
@@ -49,11 +49,11 @@ main.dashboard .fab-message {
     cursor: pointer;
   }
 
-  main.dashboard .fab-message:hover {
+  main .fab-message:hover {
     background-color: var(--dark-blue);
   }
 
-  main.dashboard .fab-message svg {
+  main .fab-message svg {
     max-height: 2rem;
     max-width: 2rem;
   }
@@ -61,7 +61,7 @@ main.dashboard .fab-message {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  main.dashboard {
+  main {
     position: absolute;
     top: 0;
     right: 0;
@@ -72,7 +72,7 @@ main.dashboard .fab-message {
     display: flex;
   }
 
-  main.dashboard .fab-message {
+  main .fab-message {
     display: none;
   }
 }
@@ -83,7 +83,7 @@ main.dashboard .fab-message {
 
 /* 1440 up devices */
 @media (min-width: 1440px) {
-  main.dashboard {
+  main {
     position: absolute;
     top: 0;
     right: 0;
@@ -94,11 +94,11 @@ main.dashboard .fab-message {
     display: flex;
   }
 
-  main.dashboard section .card {
+  main section .card {
     border-radius: 20px;
   }
 
-  main.dashboard section .card .title {
+  main section .card .title {
     font-size: 2rem;
     font-style: normal;
     font-weight: 700;

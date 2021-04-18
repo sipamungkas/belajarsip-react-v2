@@ -33,7 +33,16 @@ class Dashboard extends Component {
     //     />
     //   </>
     // );
-    return <Instructor />;
+    return (
+      <div
+        className={`schedule-container ${
+          // mode !== "fasilitator" ? "student" : ""
+          "fasilitator"
+        }`}
+      >
+        <Instructor />
+      </div>
+    );
   }
 }
 

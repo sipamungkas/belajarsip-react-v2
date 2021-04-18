@@ -1,0 +1,21 @@
+.add-container {
+  text-align: center;
+  margin: 1.2rem;
+}
+
+.btn-add-task {
+  font-family: Montserrat;
+  background-color: var(--blue);
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  color: rgba(254, 254, 254, 1);
+  outline: none;
+  border: none;
+  padding: 8px 1rem 8px 1rem;
+  border-radius: 30px;
+}
+
+.icon {
+  margin-right: 0.5rem;
+}
