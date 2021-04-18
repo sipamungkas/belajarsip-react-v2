@@ -4,10 +4,11 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 // import thunx from "redux-thunk";
 
 import { userReducer } from "./reducers/user";
+import { sidebarReducer } from "./reducers/sidebar";
 
 // const logger = createLogger();
 // const enhancers = applyMiddleware(logger);
-const reducers = combineReducers({ userReducer });
+const reducers = combineReducers({ userReducer, sidebarReducer });
 
 const reduxStore = createStore(
   reducers,

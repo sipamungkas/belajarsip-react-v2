@@ -105,7 +105,7 @@ export default function DashboardMessage(props) {
       className={`overlay-right-bg-black ${
         showMessage ? "show-overlay-right" : ""
       }`}
-      onClick={onShowMessage()}
+      onClick={onShowMessage}
     >
       <aside className={`message-container card ${showMessage ? "show" : ""}`}>
         <div className="d-flex flex-row justify-content-between align-items-center">
