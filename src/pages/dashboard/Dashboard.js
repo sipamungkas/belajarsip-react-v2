@@ -6,8 +6,6 @@ import { toggleMessage } from "../../redux/actions/sidebar";
 import Instructor from "./Instructor";
 import MessageList from "../../components/dashboard/message/MessageList";
 
-// import DashboardMain from "../components/DashboardMain";
-
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -25,19 +23,6 @@ class Dashboard extends Component {
   };
 
   render() {
-    // const { user } = this.props.userReducer;
-    // const { user } = this.props.location.state;
-    // const { showMessage, showNotification } = this.state;
-    // return (
-    //   <>
-    //     <DashboardMain
-    //       mode={user.role_id === 2 ? "student" : "fasilitator"}
-    //       showMessage={showMessage}
-    //       onShowMessage={() => this.setShowMessage}
-    //       user={user}
-    //     />
-    //   </>
-    // );
     const { showMessage } = this.props.sidebarReducer;
     const { onShowMessage } = this.props;
     return (

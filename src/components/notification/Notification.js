@@ -1,14 +1,15 @@
 import React from "react";
+
 import "./Notification.css";
 
-export default function Notification(props) {
-  const { onNotificationClick, addClass } = props;
+function Notification(props) {
+  const { addClass } = props;
 
   return (
     <div className={`notification-container ${addClass || ""}`}>
       <h3>Notification</h3>
       <img
-        onClick={onNotificationClick()}
+        onClick={props.onClick}
         src="/assets/images/icons/close-icon.svg"
         className={"close-icon"}
         alt="close"
@@ -138,3 +139,5 @@ export default function Notification(props) {
     </div>
   );
 }
+
+export default Notification;
