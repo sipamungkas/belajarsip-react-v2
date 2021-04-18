@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
-import InputForm from "../components/InputForm";
-// import { users } from "../data/users";
+import InputForm from "../../components/InputForm";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -14,6 +13,7 @@ class Login extends Component {
       password: "",
     };
   }
+
   eyeIconHandler = (e) => {
     this.setState({ showPassword: !this.state.showPassword });
   };
@@ -35,7 +35,6 @@ class Login extends Component {
           type: "error",
         }
       );
-    this.props.login(username, password);
   };
 
   render() {
