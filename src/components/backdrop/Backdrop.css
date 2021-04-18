@@ -1,0 +1,33 @@
+div.backdrop {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 2;
+}
+
+@media (min-width: 992px) {
+  div.backdrop {
+    /* right: calc(30% + 1rem); */
+    /* margin: 2% 1%; */
+    /* right: 0; */
+    margin: 0;
+    border-radius: 10px;
+  }
+
+  div.backdrop.not-dashboard {
+    right: 0;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  div.backdrop {
+    right: calc(27.5% + 1rem);
+    margin: 2% 1%;
+    border-radius: 10px;
+  }
+}

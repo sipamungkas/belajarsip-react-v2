@@ -1,0 +1,194 @@
+.notification-container {
+  background-color: var(--blue);
+  height: calc(100% - 2rem - 48px);
+  position: fixed;
+  top: calc(48px + 1rem);
+  bottom: 1rem;
+  right: 1rem;
+  left: 1rem;
+  z-index: 3;
+  padding: 0 1rem;
+  color: white;
+  border-radius: 10px;
+  /* overflow-y: scroll; */
+}
+
+.notification-container img.close-icon {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.notification-container img.close-icon:hover {
+  cursor: pointer;
+}
+
+.notification-container h3 {
+  font-family: Roboto;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.notification-container h4 {
+  font-family: Roboto;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  width: 100%;
+}
+
+.notification-container .notification-body {
+  position: relative;
+  height: 78%;
+  margin-top: 2rem;
+  /* background-color: goldenrod; */
+  overflow-y: scroll;
+}
+
+.notification-container .notification-item {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 3rem;
+  margin: 0.5rem 0;
+}
+
+.notification-container .notification-item .avatar {
+  /* height: 5rem; */
+  width: 15%;
+  max-width: 3rem;
+}
+
+.notification-container .notification-item .avatar img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.notification-container .notification-item .notification-content {
+  margin: 0 1rem;
+  width: 65%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+}
+
+.notification-container .notification-item .notification-time {
+  font-family: Roboto;
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  width: 20%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+
+@media (min-width: 768px) {
+  .notification-container {
+    height: calc(100vh - 2rem);
+    top: 1rem;
+    bottom: 1rem;
+    right: 1rem;
+    left: 25%;
+    z-index: 3;
+    padding: 0 1rem;
+    color: white;
+    border-radius: 10px;
+  }
+
+  .notification-container h3 {
+    font-size: 1.8rem;
+    margin-top: 4rem;
+  }
+
+  .notification-container .notification-body h4 {
+    font-size: 1.1rem;
+    margin: 0.8rem 0;
+  }
+
+  .notification-container .notification-body {
+    height: 72%;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    overflow: auto;
+  }
+}
+@media (min-width: 992px) {
+  .notification-container {
+    margin: 2% 0;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    left: 20%;
+    right: calc(32%);
+    z-index: 3;
+    padding: 0 1rem;
+    color: white;
+    border-radius: 0px 10px 10px 0;
+  }
+
+  .notification-container h3 {
+    font-size: 1.8rem;
+    margin-top: 4rem;
+  }
+
+  .notification-container .notification-body h4 {
+    font-size: 1.4rem;
+    margin: 1rem 0;
+  }
+
+  .notification-container .notification-body {
+    height: 80%;
+    margin-top: 1rem;
+    overflow: auto;
+  }
+
+  .notification-container .notification-body .notification-content {
+    font-size: 1.1rem;
+  }
+
+  .notification-container .notification-body .notification-time {
+    font-size: 0.9rem;
+  }
+}
+@media (min-width: 1440px) {
+  .notification-container {
+    right: calc(28.5% + 1rem);
+  }
+
+  .notification-container h3 {
+    font-size: 2.2rem;
+    margin-top: 4rem;
+  }
+
+  .notification-container .notification-body h4 {
+    font-size: 1.7rem;
+    margin: 2rem 0;
+  }
+
+  .notification-container .notification-body {
+    padding: 0 2rem;
+    height: 85%;
+    margin-top: 1rem;
+    overflow: auto;
+  }
+
+  .notification-container .notification-body .notification-content {
+    font-size: 1.5rem;
+  }
+
+  .notification-container .notification-body .notification-time {
+    font-size: 1.3rem;
+  }
+}
