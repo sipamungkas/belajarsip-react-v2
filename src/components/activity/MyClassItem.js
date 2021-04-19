@@ -50,7 +50,7 @@ export default function MyClassItem(props) {
         </span>
       </td>
       <td>
-        <span className="score">{course.score ?? 0}</span>
+        <span className="score">{Math.ceil(course.score) ?? 0}</span>
       </td>
       <td>
         <img

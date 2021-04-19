@@ -1,18 +1,22 @@
 import { SET_USER, SET_ERROR, SET_LOADING } from "../actions/actionTypes";
 
 const initialState = {
-  // user: {
-  //   id: 1,
-  //   name: "ragil",
-  //   username: "asd",
-  //   role_id: 1,
-  //   token:
-  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuYW1lIjoicmFnaWwiLCJyb2xlX2lkIjoyLCJpYXQiOjE2MTczNzI0OTIsImV4cCI6MTYxNzQ1ODg5Mn0.bDTYdgpKyaTocwwkFGK3vJAKj6UaHNBOOkGKKSptfVw",
-  // },
-  user: {},
-  isLoggedIn: false,
+  user: {
+    avatar: "avatars/avatar-1-1618295238361.png",
+    id: 1,
+    name: "Ragil Student",
+    username: "ragil",
+    role_id: 2,
+    token:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJuYW1lIjoiUmFnaWwgU3R1ZGVudCIsInJvbGVfaWQiOjIsImlhdCI6MTYxODg0NTk4OSwiZXhwIjoxNjE4OTMyMzg5LCJpc3MiOiJCRUxBSkFSU0lQIn0.UnqCQG7i3s6yiHXfmkbv64jbI-lDTJ8K3QgxFQGgFng",
+  },
+  isLoggedIn: true,
   isError: false,
   isLoading: false,
+  // user: {},
+  // isLoggedIn: false,
+  // isError: false,
+  // isLoading: false,
   error: {},
 };
 

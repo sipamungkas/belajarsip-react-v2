@@ -1,134 +1,117 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import axios from "axios";
+import { connect } from "react-redux";
 
+import "./StudentActivity.css";
 import MyClassItem from "../../../components/activity/MyClassItem";
 import NewClassItem from "../../../components/activity/NewClassItem";
 import ActivityTitle from "../../../components/activity/ActivityTitle";
 
-import "./StudentActivity.css";
+import { BASE_URL } from "../../../constant";
+import { toast } from "react-toastify";
 
-export default class Activity extends Component {
+class Activity extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMessage: false,
-      courseList: [
-        {
-          name: "Front-end fundamentals",
-          category: "Software",
-          description: "Learn the fundamentals of front end...",
-          progress: "80",
-          status: "ongoing",
-          score: 100,
-        },
-        {
-          name: "Front-end fundamentals",
-          category: "Software",
-          description: "Learn the fundamentals of front end...",
-          progress: "80",
-          status: "ongoing",
-          score: 88,
-        },
-        {
-          name: "Front-end fundamentals",
-          category: "Software",
-          description: "Learn the fundamentals of front end...",
-          progress: "80",
-          status: "ongoing",
-          score: 88,
-        },
-      ],
-      newCourseList: [
-        {
-          name: "Front-end fundamentals",
-          category: "Software",
-          description: "Learn the fundamentals of front end...",
-          level: "Beginner",
-          price: 0,
-        },
-        {
-          name: "Front-end fundamentals",
-          category: "Software",
-          description: "Learn the fundamentals of front end...",
-          level: "Beginner",
-          price: 0,
-        },
-        {
-          name: "Front-end fundamentals",
-          category: "Software",
-          description: "Learn the fundamentals of front end...",
-          level: "Beginner",
-          price: 0,
-        },
-      ],
+      isLoading: false,
+      info: null,
+      courseList: [],
+      newCourseList: [],
       searchValue: "",
       sort: "",
     };
   }
 
-  setShowMessage = () => {
-    this.setState({ showMessage: !this.state.showMessage });
-  };
-  setShowNotification = () => {
-    this.setState({ showNotification: !this.state.showNotification });
-  };
-  BASE_URL = "";
   searchHandler = () => {
-    // axios
-    //   .get(
-    //     `${BASE_URL}courses?search=${this.state.searchValue}&sort=${this.state.sort}`,
-    //     {
-    //       headers: { Authorization: `Bearer ${this.props.user.token}` },
-    //     }
-    //   )
-    //   .then((res) => {
-    //     const availableCourses = res.data.data.filter(
-    //       (course) =>
-    //         !this.state.courseList.filter(
-    //           (registered) => registered.id === course.id
-    //         ).length
-    //     );
-    //     this.setState({
-    //       newCourseList: availableCourses,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    this.props.history.push(
+      `/activity?search=${this.state.searchValue}&sort=${this.state.sort}`
+    );
   };
 
   componentDidMount() {
-    // axios(`${BASE_URL}courses/my-class?limit=3`, {
-    //   headers: { Authorization: `Bearer ${this.props.user.token}` },
-    // })
-    //   .then((res) => {
-    //     this.setState({ courseList: res.data.data });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    // axios(`${BASE_URL}courses?limit=3`, {
-    //   headers: { Authorization: `Bearer ${this.props.user.token}` },
-    // })
-    //   .then((res) => {
-    //     const availableCourses = res.data.data.filter(
-    //       (course) =>
-    //         !this.state.courseList.filter(
-    //           (registered) => registered.id === course.id
-    //         ).length
-    //     );
-    //     this.setState({
-    //       newCourseList: availableCourses,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    const { user } = this.props.authReducer;
+    axios(`${BASE_URL}/v1/courses/my-class?limit=3`, {
+      headers: { Authorization: `Bearer ${user.token}` },
+    })
+      .then((res) => {
+        this.setState({ courseList: res.data.data });
+      })
+      .catch((err) => {
+        return toast(
+          err?.response?.data?.message ||
+            err.message ||
+            "internal server error",
+          {
+            type: "error",
+          }
+        );
+      });
+    this.getNewClass();
+  }
+
+  getNewClass() {
+    const { user } = this.props.authReducer;
+    axios(`${BASE_URL}/v1/courses${this.props.location.search}`, {
+      headers: { Authorization: `Bearer ${user.token}` },
+    })
+      .then((res) => {
+        const availableCourses = res.data.data.filter(
+          (course) =>
+            !this.state.courseList.filter(
+              (registered) => registered.id === course.id
+            ).length
+        );
+        this.setState({
+          newCourseList: availableCourses,
+          info: res.data.info,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        return toast(
+          err?.response?.data?.message ||
+            err.message ||
+            "internal server error",
+          {
+            type: "error",
+          }
+        );
+      });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.search !== this.props.location.search) {
+      this.getNewClass();
+    }
+  }
+
+  nextPagehandler() {
+    const { info, searchValue, sort } = this.state;
+    if (info.next) {
+      this.props.history.push(
+        `/activity?search=${searchValue}&sort=${sort}&page=${
+          Number(info.current_page) + 1
+        }`
+      );
+    }
+  }
+
+  prevPagehandler() {
+    const { info, searchValue, sort } = this.state;
+    if (info.prev) {
+      this.props.history.push(
+        `/activity?search=${searchValue}&sort=${sort}&page=${
+          Number(info.current_page) - 1
+        }`
+      );
+    }
   }
 
   render() {
     const { user } = this.props;
-    const { courseList, newCourseList } = this.state;
+    const { courseList, newCourseList, info } = this.state;
     return (
       <div className="main-container">
         <ActivityTitle title={"Activity"} back={false} />
@@ -286,7 +269,10 @@ export default class Activity extends Component {
             <div className="pagination-container d-flex flex-row justify-content-between align-items-center">
               <span className="w-100">Showing 10 out of 64</span>
               <div className="d-flex flex-row justify-content-evenly">
-                <div className="table-page touchable">
+                <div
+                  className="table-page touchable"
+                  onClick={() => this.prevPagehandler()}
+                >
                   <img
                     className="rotate-180"
                     src="/assets/images/icons/forward-icon.svg"
@@ -294,14 +280,17 @@ export default class Activity extends Component {
                   />
                 </div>
                 <div className={"page-number "}>
-                  <span className="table-page touchable active">1</span>
+                  {/* <span className="table-page touchable active">1</span>
                   <span className="table-page touchable">2</span>
                   <span className="table-page touchable">3</span>
                   <span className="table-page touchable">4</span>
-                  <span className="table-page touchable">5</span>
+                  <span className="table-page touchable">5</span> */}
                 </div>
 
-                <div className="table-page touchable">
+                <div
+                  className="table-page touchable"
+                  onClick={() => this.nextPagehandler()}
+                >
                   <img src="/assets/images/icons/forward-icon.svg" alt="" />
                 </div>
               </div>
@@ -312,3 +301,12 @@ export default class Activity extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    authReducer: state.authReducer,
+  };
+};
+
+const ConnectedActivity = connect(mapStateToProps)(Activity);
+export default withRouter(ConnectedActivity);
