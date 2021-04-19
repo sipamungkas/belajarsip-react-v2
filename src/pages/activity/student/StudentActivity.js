@@ -173,7 +173,7 @@ export default class Activity extends Component {
             <div className="d-flex align-items-center justify-content-center">
               <Link
                 to={{
-                  pathname: "/dashboard/activity/my-class",
+                  pathname: "/activity/my-class",
                   state: { user },
                 }}
               >
