@@ -114,6 +114,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
 }
 
 .login-container .btn-container .btn-google:hover {

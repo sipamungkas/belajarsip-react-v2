@@ -25,7 +25,7 @@ class Dashboard extends Component {
 
   render() {
     const { showMessage } = this.props.sidebarReducer;
-    const { user } = this.props.userReducer;
+    const { user } = this.props.authReducer;
     const { onShowMessage } = this.props;
     return (
       <>

@@ -1,20 +1,20 @@
 import axios from "axios";
-import { SET_ERROR, SET_USER } from "./actionTypes";
+import { SET_ERROR, SET_LOADING, SET_USER } from "./actionTypes";
+import { BASE_URL } from "../../constant";
 
-const BASE_URL = process.env.REACT_APP_API;
-
-export const loginHandler = (username, password) => {
+export function loginHandler(username, password) {
   return (dispatch) => {
-    return axios
+    dispatch({
+      type: SET_LOADING,
+    });
+    axios
       .post(`${BASE_URL}/v1/auth/login`, {
         username,
         password,
       })
       .then((res) => {
-        dispatch({
-          type: SET_USER,
-          payload: res.data,
-        });
+        console.log(res.data.data);
+        dispatch({ type: SET_USER, payload: res.data.data });
       })
       .catch((err) => {
         dispatch({
@@ -23,4 +23,4 @@ export const loginHandler = (username, password) => {
         });
       });
   };
-};
+}

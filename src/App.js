@@ -8,10 +8,23 @@ import Activity from "./pages/activity/Activity";
 import MyClass from "./pages/activity/student/MyClass";
 import ClassDetail from "./pages/activity/ClassDetail";
 import Profile from "./pages/profile/Profile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 function App() {
   return (
     <Layout>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Switch>
         <Route path="/" exact>
           <Login />

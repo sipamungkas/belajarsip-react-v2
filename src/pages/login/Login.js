@@ -1,8 +1,13 @@
-import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
-import "./Login.css";
-import InputForm from "../../components/inputForm/InputForm";
+import { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
+import { connect } from "react-redux";
+
+import "./Login.css";
+
+import InputForm from "../../components/inputForm/InputForm";
+
+import { loginHandler } from "../../redux/actions/auth";
 
 class Login extends Component {
   constructor(props) {
@@ -17,26 +22,39 @@ class Login extends Component {
     this.setState({ showPassword: !this.state.showPassword });
   };
 
+  componentDidUpdate(prevProps) {
+    const { isError, error, isLoggedIn } = this.props.authReducer;
+    if (isLoggedIn) return this.props.history.replace("/dashboard");
+    if (prevProps !== this.props) {
+      if (isError) {
+        return toast(
+          error?.response?.data?.message ||
+            error.message ||
+            "internal server error",
+          {
+            type: "error",
+          }
+        );
+      }
+    }
+  }
+
   auth = () => {
     const { username, password } = this.state;
-    if (!username || !password)
+    if (!username || !password) {
       return toast(
         "Username/Email or Password can not be empty" ||
           "Internal server Error",
         {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
           type: "error",
         }
       );
+    }
+    this.props.onLoginHandler(username, password);
   };
 
   render() {
+    const { isLoading } = this.props.authReducer;
     return (
       <>
         <div className="container d-flex flex-column align-items-center justify-content-center col-10 col-md-6 col-lg-5 col-xl-4 login-container">
@@ -77,16 +95,17 @@ class Login extends Component {
               tabIndex={2}
               className="btn-login"
               onClick={() => this.auth()}
+              disabled={isLoading}
             >
-              Login
+              {isLoading ? "Loading ...." : "Login"}
             </button>
-            <div className="btn-google" tabIndex={2}>
+            <button className="btn-google" tabIndex={2} disabled={isLoading}>
               <img
                 src="/assets/images/icons/google-icon.svg"
                 alt="google icon"
               />
               Login with google
-            </div>
+            </button>
           </div>
           <Link to="/register" className="new-user" tabIndex={2}>
             New user? <span>Register</span>
@@ -97,4 +116,20 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    authReducer: state.authReducer,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLoginHandler: (username, password) =>
+      dispatch(loginHandler(username, password)),
+    // onLoginHandler: (user) => loginHandler(user),
+  };
+};
+
+const ConnectedLogin = connect(mapStateToProps, mapDispatchToProps)(Login);
+
+export default withRouter(ConnectedLogin);
