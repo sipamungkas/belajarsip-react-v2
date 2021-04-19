@@ -1,52 +1,88 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
+import { connect } from "react-redux";
+
+import { BASE_URL } from "../../../constant";
 import MyClassItem from "../../../components/activity/MyClassItem";
 import ActivityTitle from "../../../components/activity/ActivityTitle";
 
-export default class MyClass extends Component {
+class MyClass extends Component {
   constructor() {
     super();
     this.state = {
-      showMessage: false,
-      showNotification: false,
+      isLoading: false,
+      info: null,
+      courseList: [],
+      searchValue: "",
     };
   }
 
-  courseList = [
-    {
-      id: 1,
-      name: "Front-end fundamentals",
-      category: "Software",
-      description: "Learn the fundamentals of front end...",
-      progress: "80",
-      status: "ongoing",
-      score: 88,
-    },
-    {
-      id: 2,
-      name: "Front-end fundamentals",
-      category: "Software",
-      description: "Learn the fundamentals of front end...",
-      progress: "80",
-      status: "ongoing",
-      score: 100,
-    },
+  searchHandler = () => {
+    this.props.history.push(
+      `/activity/my-class?search=${this.state.searchValue}`
+    );
+  };
 
-    {
-      id: 3,
-      name: "Front-end fundamentals",
-      category: "Software",
-      description: "Learn the fundamentals of front end...",
-      progress: "80",
-      status: "ongoing",
-      score: 88,
-    },
-  ];
+  componentDidMount() {
+    this.getMyClass();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.search !== this.props.location.search) {
+      this.getMyClass();
+    }
+  }
+
+  getMyClass() {
+    const { user } = this.props.authReducer;
+    axios(`${BASE_URL}/v1/courses/my-class${this.props.location.search}`, {
+      headers: { Authorization: `Bearer ${user.token}` },
+    })
+      .then((res) => {
+        this.setState({ courseList: res.data.data, info: res.data.info });
+      })
+      .catch((err) => {
+        return toast(
+          err?.response?.data?.message ||
+            err.message ||
+            "internal server error",
+          {
+            type: "error",
+          }
+        );
+      });
+  }
+
+  nextPagehandler() {
+    const { info, searchValue } = this.state;
+    if (info.next) {
+      this.props.history.push(
+        `/activity/my-class?search=${searchValue}&page=${
+          Number(info.current_page) + 1
+        }`
+      );
+    }
+  }
+
+  prevPagehandler() {
+    const { info, searchValue } = this.state;
+    if (info.prev) {
+      this.props.history.push(
+        `/activity/my-class?search=${searchValue}&page=${
+          Number(info.current_page) - 1
+        }`
+      );
+    }
+  }
 
   render() {
+    const { courseList, info } = this.state;
     return (
       <div className="main-container">
         <ActivityTitle title={"My Class"} back={true} />
-        <div className="card bg-transparent border-0 p-0">
+        <div className="card bg-transparent border-0 p-0 overflow-hidden">
           <div className="card-header bg-transparent border-0 col-12 col-md-12 col-lg-12 p-0 my-4 my-md-4 my-lg-2 ">
             <div className="d-flex flex-row justify-content-between row">
               <div className="d-flex flex-row justify-content-between align-items-center col-12 col-md-8">
@@ -55,8 +91,14 @@ export default class MyClass extends Component {
                   className={"form-control rounded-5px my-class-search"}
                   placeholder="Quick Search"
                   aria-label="Quick Search"
+                  onChange={(e) =>
+                    this.setState({ searchValue: e.target.value })
+                  }
                 />
-                <button className="btn bg-primary-blue text-xs my-0 mx-2 text-white search">
+                <button
+                  className="btn bg-primary-blue text-xs my-0 mx-2 text-white search"
+                  onClick={() => this.searchHandler()}
+                >
                   Search
                 </button>
               </div>
@@ -98,14 +140,12 @@ export default class MyClass extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.courseList.map((course, index) => (
+                {courseList.map((course, index) => (
                   <MyClassItem
                     key={index}
                     onClickHandler={() =>
                       this.props.history.push({
-                        pathname: `/dashboard/activity/my-class/${
-                          course?.id ?? ""
-                        }`,
+                        pathname: `/activity/class/${course?.id ?? ""}`,
                       })
                     }
                     course={course}
@@ -114,9 +154,18 @@ export default class MyClass extends Component {
               </tbody>
             </table>
             <div className="pagination-container d-flex flex-row justify-content-between align-items-center">
-              <span className="w-100">Showing 10 out of 64</span>
+              <span className="w-100">
+                Showing{" "}
+                {info?.current_page === info?.total_page
+                  ? info?.total
+                  : courseList.length / info?.current_page}{" "}
+                out of {info?.total || 0}
+              </span>
               <div className="d-flex flex-row justify-content-evenly">
-                <div className="table-page touchable">
+                <div
+                  className={`table-page ${info?.prev ? "touchable" : ""}`}
+                  onClick={() => this.prevPagehandler()}
+                >
                   <img
                     className="rotate-180"
                     src="/assets/images/icons/forward-icon.svg"
@@ -124,14 +173,17 @@ export default class MyClass extends Component {
                   />
                 </div>
                 <div className={"page-number "}>
-                  <span className="table-page touchable active">1</span>
+                  {/* <span className="table-page touchable active">1</span>
                   <span className="table-page touchable">2</span>
                   <span className="table-page touchable">3</span>
                   <span className="table-page touchable">4</span>
-                  <span className="table-page touchable">5</span>
+                  <span className="table-page touchable">5</span> */}
                 </div>
 
-                <div className="table-page touchable">
+                <div
+                  className={`table-page ${info?.next ? "touchable" : ""}`}
+                  onClick={() => this.nextPagehandler()}
+                >
                   <img src="/assets/images/icons/forward-icon.svg" alt="" />
                 </div>
               </div>
@@ -142,3 +194,12 @@ export default class MyClass extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    authReducer: state.authReducer,
+  };
+};
+
+const ConnectedMyClass = connect(mapStateToProps)(MyClass);
+export default withRouter(ConnectedMyClass);
