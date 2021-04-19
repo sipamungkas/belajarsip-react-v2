@@ -1,5 +1,7 @@
 import { Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
+import PrivateRoute from "./components/PrivateRoute";
 import Layout from "./components/layouts/Layout";
 import Login from "./pages/login/Login";
 import Forgot from "./pages/forgot/Forgot";
@@ -8,7 +10,7 @@ import Activity from "./pages/activity/Activity";
 import MyClass from "./pages/activity/student/MyClass";
 import ClassDetail from "./pages/activity/ClassDetail";
 import Profile from "./pages/profile/Profile";
-import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.min.css";
 
 function App() {
@@ -32,9 +34,9 @@ function App() {
         <Route path="/forgot">
           <Forgot />
         </Route>
-        <Route path="/dashboard">
+        <PrivateRoute path="/dashboard">
           <Dashboard />
-        </Route>
+        </PrivateRoute>
         <Route path="/activity/my-class">
           <MyClass />
         </Route>

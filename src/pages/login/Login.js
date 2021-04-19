@@ -22,6 +22,11 @@ class Login extends Component {
     this.setState({ showPassword: !this.state.showPassword });
   };
 
+  componentDidMount() {
+    const { isLoggedIn } = this.props.authReducer;
+    if (isLoggedIn) return this.props.history.replace("/dashboard");
+  }
+
   componentDidUpdate(prevProps) {
     const { isError, error, isLoggedIn } = this.props.authReducer;
     if (isLoggedIn) return this.props.history.replace("/dashboard");
