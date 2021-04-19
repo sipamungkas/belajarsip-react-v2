@@ -7,7 +7,7 @@ export default function ActivityTitle(props) {
     <h1 className={`d-flex align-items-center ${classes.title}`}>
       {props.back ? (
         <Link
-          to="/dashboard/activity"
+          to="/activity"
           className={"d-flex align-items-center justify-content-center"}
         >
           <img
