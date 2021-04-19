@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
+
 import ActivityTitle from "../../../components/activity/ActivityTitle";
 import ClassDescription from "../../../components/activity/ClassDescription";
 import ClassProgress from "../../../components/activity/ClassProgress";
 
 export default function ClassDetail(props) {
   const [tabIndex, setTabIndex] = useState(1);
+
   const { id } = useParams();
   const courseList = [
     {

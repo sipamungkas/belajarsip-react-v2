@@ -6,7 +6,7 @@ import Forgot from "./pages/forgot/Forgot";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Activity from "./pages/activity/Activity";
 import MyClass from "./pages/activity/student/MyClass";
-import ClassDetail from "./pages/activity/student/ClassDetail";
+import ClassDetail from "./pages/activity/ClassDetail";
 
 function App() {
   return (
