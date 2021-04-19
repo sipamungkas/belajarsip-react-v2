@@ -7,6 +7,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Activity from "./pages/activity/Activity";
 import MyClass from "./pages/activity/student/MyClass";
 import ClassDetail from "./pages/activity/ClassDetail";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route path="/activity">
           <Activity />
+        </Route>
+        <Route path="/profile">
+          <Profile />
         </Route>
       </Switch>
     </Layout>

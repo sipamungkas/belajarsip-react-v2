@@ -91,10 +91,7 @@ function Sidebar(props) {
               className={"avatar-image"}
               alt={"avatar"}
             />
-            <Link
-              to={{ pathname: "/dashboard/profile", state: { user } }}
-              className="d-flex flex-column"
-            >
+            <Link to={{ pathname: "/profile" }} className="d-flex flex-column">
               <span className="avatar-name text-white">
                 {user.name || "Emir Kharisma"}
               </span>
@@ -103,7 +100,7 @@ function Sidebar(props) {
           </div>
           <div className="menu-container">
             <Link
-              to={{ pathname: "/dashboard", state: { user } }}
+              to={{ pathname: "/dashboard" }}
               className={`menu-link ${isDashboard ? "active" : ""}`}
             >
               <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
@@ -115,7 +112,7 @@ function Sidebar(props) {
               Dashboard
             </Link>
             <Link
-              to={{ pathname: "/activity", state: { user } }}
+              to={{ pathname: "/activity" }}
               className={`menu-link ${isActivity ? "active" : ""}`}
             >
               <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
