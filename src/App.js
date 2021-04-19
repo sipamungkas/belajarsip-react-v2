@@ -6,6 +6,7 @@ import Forgot from "./pages/forgot/Forgot";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Activity from "./pages/activity/Activity";
 import MyClass from "./pages/activity/student/MyClass";
+import ClassDetail from "./pages/activity/student/ClassDetail";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path="/activity/my-class">
           <MyClass />
+        </Route>
+        <Route path="/activity/class/:id">
+          <ClassDetail />
         </Route>
         <Route path="/activity">
           <Activity />
