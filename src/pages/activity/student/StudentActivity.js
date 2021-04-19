@@ -270,7 +270,7 @@ class Activity extends Component {
               <span className="w-100">Showing 10 out of 64</span>
               <div className="d-flex flex-row justify-content-evenly">
                 <div
-                  className="table-page touchable"
+                  className={`table-page ${info?.prev ? "touchable" : ""}`}
                   onClick={() => this.prevPagehandler()}
                 >
                   <img
@@ -288,7 +288,7 @@ class Activity extends Component {
                 </div>
 
                 <div
-                  className="table-page touchable"
+                  className={`table-page ${info?.next ? "touchable" : ""}`}
                   onClick={() => this.nextPagehandler()}
                 >
                   <img src="/assets/images/icons/forward-icon.svg" alt="" />
