@@ -2,8 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
 import InputForm from "../../components/inputForm/InputForm";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
+import { toast } from "react-toastify";
 
 class Login extends Component {
   constructor(props) {
@@ -40,18 +39,6 @@ class Login extends Component {
   render() {
     return (
       <>
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={true}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-
         <div className="container d-flex flex-column align-items-center justify-content-center col-10 col-md-6 col-lg-5 col-xl-4 login-container">
           <h1>Login</h1>
           <form className={"w-100"}>
