@@ -4,6 +4,7 @@ import Layout from "./components/layouts/Layout";
 import Login from "./pages/login/Login";
 import Forgot from "./pages/forgot/Forgot";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Activity from "./pages/activity/Activity";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         </Route>
         <Route path="/dashboard">
           <Dashboard />
+        </Route>
+        <Route path="/activity">
+          <Activity />
         </Route>
       </Switch>
     </Layout>
