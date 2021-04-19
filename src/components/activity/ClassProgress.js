@@ -2,6 +2,7 @@ import React from "react";
 
 export default function ClassProgress(props) {
   const { progressList } = props;
+  if (!progressList) return <>No Content</>;
   return (
     <div className="card bg-white border-0 p-0 rounded-10px">
       <div className="card-body ">
