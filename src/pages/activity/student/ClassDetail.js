@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ActivityTitle from "../../../components/activity/ActivityTitle";
 import ClassDescription from "../../../components/activity/ClassDescription";
 import ClassProgress from "../../../components/activity/ClassProgress";
 
 export default function ClassDetail(props) {
   const [tabIndex, setTabIndex] = useState(1);
-
+  const { id } = useParams();
   const courseList = [
     {
       id: 1,
@@ -80,7 +80,7 @@ export default function ClassDetail(props) {
 
     {
       id: 2,
-      title: "Front-end fundamentals",
+      title: "Front-end fundamentals 2",
       category: "Software",
       description: "Learn the fundamentals of front end...",
       progress: "80",
@@ -150,10 +150,7 @@ export default function ClassDetail(props) {
   const changeTabHandler = (tabIndex) => {
     setTabIndex(tabIndex);
   };
-
-  console.log(props);
-  const params = { id: 1 };
-  const course = courseList.find((data) => data.id === parseInt(params.id));
+  const course = courseList.find((data) => data.id === parseInt(id));
 
   return (
     <div className="main-container">

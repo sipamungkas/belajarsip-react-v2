@@ -4,7 +4,7 @@ import classes from "./MyClassItem.module.css";
 
 export default function MyClassItem(props) {
   const { course } = props;
-  console.log(course);
+
   return (
     <tr
       className={course.score === 100 ? classes.perfect : ""}
