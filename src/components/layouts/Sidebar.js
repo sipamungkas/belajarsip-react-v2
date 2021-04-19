@@ -7,8 +7,8 @@ import "./Sidebar.css";
 
 function Sidebar(props) {
   const [show, setShow] = useState(false);
-  const isDashboard = useRouteMatch("/dashboard").isExact;
-  const isActivity = useRouteMatch("/dashboard/activity");
+  const isDashboard = useRouteMatch("/dashboard");
+  const isActivity = useRouteMatch("/activity");
   const { user } = props.userReducer;
   const { showMessage } = props.sidebarReducer;
   const { onShowMessage } = props;
@@ -115,7 +115,7 @@ function Sidebar(props) {
               Dashboard
             </Link>
             <Link
-              to={{ pathname: "/dashboard/activity", state: { user } }}
+              to={{ pathname: "/activity", state: { user } }}
               className={`menu-link ${isActivity ? "active" : ""}`}
             >
               <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
