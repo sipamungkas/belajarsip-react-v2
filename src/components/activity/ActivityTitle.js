@@ -19,7 +19,6 @@ export default function ActivityTitle(props) {
       ) : (
         ""
       )}
-
       {props.title}
     </h1>
   );

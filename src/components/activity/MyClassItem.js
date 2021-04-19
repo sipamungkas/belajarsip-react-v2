@@ -1,15 +1,16 @@
-import React from "react";
 import PropTypes from "prop-types";
+
+import classes from "./MyClassItem.module.css";
 
 export default function MyClassItem(props) {
   const { course } = props;
   console.log(course);
   return (
     <tr
-      className={course.score === 100 ? "perfect" : ""}
+      className={course.score === 100 ? classes.perfect : ""}
       onClick={props.onClickHandler}
     >
-      <th scope=" row">
+      <th scope="row">
         <input type="checkbox" name="" id="" />
       </th>
       <td className="table-title td-truncate">{course.name ?? "Untitled"}</td>

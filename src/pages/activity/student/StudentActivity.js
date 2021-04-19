@@ -12,8 +12,55 @@ export default class Activity extends Component {
     super(props);
     this.state = {
       showMessage: false,
-      courseList: [],
-      newCourseList: [],
+      courseList: [
+        {
+          name: "Front-end fundamentals",
+          category: "Software",
+          description: "Learn the fundamentals of front end...",
+          progress: "80",
+          status: "ongoing",
+          score: 100,
+        },
+        {
+          name: "Front-end fundamentals",
+          category: "Software",
+          description: "Learn the fundamentals of front end...",
+          progress: "80",
+          status: "ongoing",
+          score: 88,
+        },
+        {
+          name: "Front-end fundamentals",
+          category: "Software",
+          description: "Learn the fundamentals of front end...",
+          progress: "80",
+          status: "ongoing",
+          score: 88,
+        },
+      ],
+      newCourseList: [
+        {
+          name: "Front-end fundamentals",
+          category: "Software",
+          description: "Learn the fundamentals of front end...",
+          level: "Beginner",
+          price: 0,
+        },
+        {
+          name: "Front-end fundamentals",
+          category: "Software",
+          description: "Learn the fundamentals of front end...",
+          level: "Beginner",
+          price: 0,
+        },
+        {
+          name: "Front-end fundamentals",
+          category: "Software",
+          description: "Learn the fundamentals of front end...",
+          level: "Beginner",
+          price: 0,
+        },
+      ],
       searchValue: "",
       sort: "",
     };

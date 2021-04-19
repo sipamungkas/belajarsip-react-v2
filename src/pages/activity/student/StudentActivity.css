@@ -99,10 +99,6 @@
   vertical-align: middle;
 }
 
-.main-container table.my-class-table .perfect {
-  background-image: linear-gradient(var(--light-blue), white);
-}
-
 .badge-ongoing {
   background-color: rgba(210, 222, 237, 1);
   font-family: Montserrat;
@@ -144,10 +140,6 @@
 
 .main-container table.new-class-table tbody tr td {
   padding: 10px;
-}
-
-.main-container table.new-class-table tbody tr td.table-register {
-  padding: 0;
 }
 
 main .pagination-container {

@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import classes from "./NewClassItem.module.css";
+
 export default function NewClassItem(props) {
   const { course } = props;
   return (
@@ -11,7 +14,7 @@ export default function NewClassItem(props) {
       </td>
       <td className={"table-level"}>{course.level ?? "Beginner"}</td>
       <td>{course.price === 0 ? "Free" : `$${course.price}`}</td>
-      <td className={"table-register"}>
+      <td className={classes["table-register"]}>
         <Link to={"/"} className="badge btn-register">
           Register
         </Link>{" "}
