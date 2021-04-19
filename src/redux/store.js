@@ -1,18 +1,18 @@
-import { createStore, applyMiddleware, combineReducers } from "redux";
-// import { createLogger } from "redux-logger";
-// import rpm from "redux-promise-middleware";
-// import thunx from "redux-thunk";
+import { createStore, applyMiddleware, combineReducers, compose } from "redux";
+import ReduxThunx from "redux-thunk";
 
 import { userReducer } from "./reducers/user";
 import { sidebarReducer } from "./reducers/sidebar";
 
-// const logger = createLogger();
-// const enhancers = applyMiddleware(logger);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+// development mode
+const enhancers = composeEnhancers(applyMiddleware(ReduxThunx));
+
+// production mode
+// const enhancers = applyMiddleware(ReduxThunx);
 const reducers = combineReducers({ userReducer, sidebarReducer });
 
-const reduxStore = createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const reduxStore = createStore(reducers, enhancers);
 
 export default reduxStore;
