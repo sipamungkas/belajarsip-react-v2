@@ -5,6 +5,7 @@ import Login from "./pages/login/Login";
 import Forgot from "./pages/forgot/Forgot";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Activity from "./pages/activity/Activity";
+import MyClass from "./pages/activity/student/MyClass";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/dashboard">
           <Dashboard />
+        </Route>
+        <Route path="/activity/my-class">
+          <MyClass />
         </Route>
         <Route path="/activity">
           <Activity />
