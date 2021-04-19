@@ -1,0 +1,229 @@
+.main-container table.my-class-table.fasilitator tbody tr th,
+.main-container table.my-class-table.fasilitator tbody tr td {
+  line-height: 3rem;
+}
+
+.main-container .form-activity {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.main-container .form-activity .form-side {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container .form-activity .form-row {
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.main-container .form-activity .activity-input {
+  outline: none;
+  border: none;
+}
+
+.main-container .card .form-activity select {
+  background: white;
+  height: 1.25rem;
+  border: 1px solid black;
+}
+
+.main-container .card .form-activity textarea {
+  background: rgba(235, 235, 235, 1);
+}
+
+.main-container .card .form-activity .button-create-class {
+  width: 100%;
+}
+
+.main-container .card .form-activity .button-create-class .create-class {
+  width: 100%;
+}
+.member-pop-up .member-container,
+.main-container .card .member-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.big-overlay {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.big-overlay.show {
+  position: fixed;
+  z-index: 4;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 4;
+  opacity: 1;
+  height: auto;
+  width: auto;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container .card .member-container img.avatar {
+  height: 4rem;
+}
+
+.main-container .card .member-container .member-name {
+  flex: 1;
+  font-family: Kanit;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.member-pop-up {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+  background-color: #fff;
+  height: auto;
+  width: 40%;
+  min-width: 18rem;
+  padding: 0.5rem;
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+
+.member-pop-up .close-icon {
+  float: right;
+}
+
+.member-pop-up td.score {
+  font-family: Montserrat;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  color: rgba(81, 231, 43, 1);
+}
+
+.member-pop-up .member-container {
+  justify-content: flex-start;
+}
+
+.member-pop-up .member-container .member-name {
+  margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  /* activity 3 class detail */
+  .main-container .card .tab-menu-container.fasilitator {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-bottom: none;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-container .card .form-activity .button-create-class {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .main-container .card .form-activity .button-create-class .create-class {
+    width: 25%;
+  }
+
+  .main-container .card .member-container {
+    margin: 1rem 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-container .form-activity {
+    font-size: 1.1rem;
+  }
+
+  .main-container .card .form-activity select {
+    background: white;
+    height: 1.5rem;
+  }
+
+  .main-container .member-pop-up .member-container .member-name {
+    font-size: 1.3rem;
+  }
+
+  .main-container .member-pop-up table tbody tr td,
+  .member-pop-up .member-container .member-name {
+    font-size: 1.2rem;
+    line-height: 3rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .main-container .form-activity {
+    padding: 2rem;
+  }
+
+  .main-container .form-activity,
+  .main-container .form-activity ::placeholder {
+    font-size: 1.4rem;
+  }
+
+  .main-container .card .form-activity .form-side {
+    flex: 1;
+  }
+
+  .main-container .card .form-activity select {
+    background: white;
+    height: 2rem;
+  }
+
+  .main-container .card .member-container img.avatar {
+    height: 5rem;
+  }
+
+  .main-container .card .member-container .member-name {
+    flex: 1;
+    font-family: Kanit;
+    font-size: 1.4rem;
+    margin-left: 2rem;
+  }
+
+  .main-container .card .member-container {
+    margin: 1rem 2rem;
+  }
+
+  .main-container .member-pop-up .member-container {
+    margin: 2rem;
+  }
+
+  .main-container .member-pop-up .member-container .member-name {
+    font-size: 1.8rem;
+  }
+
+  .main-container .member-pop-up table {
+    margin: 2rem;
+  }
+
+  .main-container .member-pop-up table tbody tr td,
+  .member-pop-up .member-container .member-name {
+    font-size: 1.4rem;
+    line-height: 4rem;
+  }
+}
