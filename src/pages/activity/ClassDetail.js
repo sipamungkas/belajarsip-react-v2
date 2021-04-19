@@ -6,7 +6,7 @@ import StudentClassDetail from "./student/ClassDetail";
 import InstructorClassDetail from "./instructor/ClassDetail";
 
 function ClassDetail(props) {
-  const { user } = props.userReducer;
+  const { user } = props.authReducer;
   return user.role_id === 1 ? (
     <InstructorClassDetail />
   ) : (
@@ -16,7 +16,7 @@ function ClassDetail(props) {
 
 const mapStateToProps = (state) => {
   return {
-    userReducer: state.userReducer,
+    authReducer: state.authReducer,
   };
 };
 

@@ -63,7 +63,7 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
   return {
     sidebarReducer: state.sidebarReducer,
-    userReducer: state.userReducer,
+    authReducer: state.authReducer,
   };
 };
 

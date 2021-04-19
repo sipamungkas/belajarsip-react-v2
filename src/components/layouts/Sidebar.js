@@ -9,7 +9,7 @@ function Sidebar(props) {
   const [show, setShow] = useState(false);
   const isDashboard = useRouteMatch("/dashboard");
   const isActivity = useRouteMatch("/activity");
-  const { user } = props.userReducer;
+  const { user } = props.authReducer;
   const { showMessage } = props.sidebarReducer;
   const { onShowMessage } = props;
   return (
@@ -144,7 +144,7 @@ function Sidebar(props) {
 }
 const mapStateToProps = (state) => {
   return {
-    userReducer: state.userReducer,
+    authReducer: state.authReducer,
     sidebarReducer: state.sidebarReducer,
   };
 };

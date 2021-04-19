@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./Profile.css";
 
 function Profile(props) {
-  const { user } = props.userReducer;
+  const { user } = props.authReducer;
 
   return (
     <div className="main-container">
@@ -153,7 +153,7 @@ function Profile(props) {
 
 const mapStateToProps = (state) => {
   return {
-    userReducer: state.userReducer,
+    authReducer: state.authReducer,
   };
 };
 const ConnectedProfile = connect(mapStateToProps)(Profile);

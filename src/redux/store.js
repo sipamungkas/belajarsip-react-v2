@@ -1,17 +1,18 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
-import ReduxThunx from "redux-thunk";
+import ReduxThunk from "redux-thunk";
 
-import { userReducer } from "./reducers/user";
+import { authReducer } from "./reducers/auth";
 import { sidebarReducer } from "./reducers/sidebar";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // development mode
-const enhancers = composeEnhancers(applyMiddleware(ReduxThunx));
+const enhancers = composeEnhancers(applyMiddleware(ReduxThunk));
 
 // production mode
 // const enhancers = applyMiddleware(ReduxThunx);
-const reducers = combineReducers({ userReducer, sidebarReducer });
+
+const reducers = combineReducers({ authReducer, sidebarReducer });
 
 const reduxStore = createStore(reducers, enhancers);
 
