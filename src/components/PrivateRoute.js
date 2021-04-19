@@ -1,4 +1,4 @@
-import { Route, Redirect, useHistory, useLocation } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 function PrivateRoute({ authReducer, children, ...rest }) {

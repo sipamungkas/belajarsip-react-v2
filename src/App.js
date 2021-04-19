@@ -37,18 +37,18 @@ function App() {
         <PrivateRoute path="/dashboard">
           <Dashboard />
         </PrivateRoute>
-        <Route path="/activity/my-class">
+        <PrivateRoute path="/activity/my-class">
           <MyClass />
-        </Route>
-        <Route path="/activity/class/:id">
+        </PrivateRoute>
+        <PrivateRoute path="/activity/class/:id">
           <ClassDetail />
-        </Route>
-        <Route path="/activity">
+        </PrivateRoute>
+        <PrivateRoute path="/activity">
           <Activity />
-        </Route>
-        <Route path="/profile">
+        </PrivateRoute>
+        <PrivateRoute path="/profile">
           <Profile />
-        </Route>
+        </PrivateRoute>
       </Switch>
     </Layout>
   );
