@@ -54,7 +54,7 @@ export default function DashboardScheduleItem(props) {
             </svg>
 
             <div className={classes["course-duration"]}>
-              {`${course?.duration / 60000 ?? 0} minutes`}
+              {`${Math.ceil(course?.duration / 60000) ?? 0} minutes`}
             </div>
           </div>
         ))}

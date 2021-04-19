@@ -41,6 +41,7 @@
   /* background-color: goldenrod; */
   height: 10rem;
   min-width: 16rem;
+  max-width: 70%;
   display: flex;
   flex: 1;
   position: relative;
@@ -82,11 +83,21 @@
   left: 0.4rem;
 }
 
+@media (min-width: 768px) {
+  .course-item {
+    max-width: 50%;
+  }
+}
+
 @media (min-width: 992px) {
   .course-duration {
     bottom: 1rem;
     left: 1rem;
     font-size: 1.5rem;
+  }
+
+  .course-item {
+    max-width: 60%;
   }
 }
 
@@ -96,13 +107,11 @@
   }
 
   .course-item {
-    background-color: var(--light-blue);
-    /* background-color: goldenrod; */
     height: 13rem;
     min-width: 25rem;
-
     border-radius: 20px;
     margin-right: 2rem;
+    max-width: 50%;
   }
 
   .course-list {
