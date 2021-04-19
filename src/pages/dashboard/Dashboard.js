@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { toggleMessage } from "../../redux/actions/sidebar";
 
 import Instructor from "./Instructor";
+import Student from "./Student";
 import MessageList from "../../components/dashboard/message/MessageList";
 
 class Dashboard extends Component {
@@ -24,6 +25,7 @@ class Dashboard extends Component {
 
   render() {
     const { showMessage } = this.props.sidebarReducer;
+    const { user } = this.props.userReducer;
     const { onShowMessage } = this.props;
     return (
       <>
@@ -33,7 +35,7 @@ class Dashboard extends Component {
             "fasilitator"
           }`}
         >
-          <Instructor />
+          {user.role_id === 1 ? <Instructor /> : <Student />}
         </div>
         <MessageList
           showMessage={showMessage}
@@ -61,6 +63,7 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
   return {
     sidebarReducer: state.sidebarReducer,
+    userReducer: state.userReducer,
   };
 };
 

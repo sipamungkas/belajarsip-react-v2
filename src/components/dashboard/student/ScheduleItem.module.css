@@ -1,0 +1,128 @@
+.schedule-time {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Roboto;
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.schedule-time::before {
+  border-top: 2px solid rgba(0, 0, 0, 0.55);
+  content: "";
+  margin: 0 auto; /* this centers the line to the full width specified */
+  position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+  top: 44%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 95%;
+  z-index: -1;
+}
+
+.schedule-time span {
+  background-color: white;
+}
+
+.course-list {
+  min-height: 11rem;
+  margin: 1rem;
+  padding: 0.5rem;
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.course-item {
+  background-color: var(--light-blue);
+  /* background-color: goldenrod; */
+  height: 10rem;
+  min-width: 16rem;
+  display: flex;
+  flex: 1;
+  position: relative;
+  border-radius: 10px;
+  margin-right: 0.5rem;
+}
+
+.category-icon {
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+}
+
+.course-title {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 400;
+  max-width: 80%;
+  position: relative;
+  top: 0.4rem;
+  left: 0.4rem;
+}
+
+.list-icon {
+  position: absolute;
+  top: 0.4rem;
+  right: 1rem;
+  width: auto;
+  height: 1.4rem;
+  transform: rotate(90deg);
+}
+
+.course-duration {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 400;
+  position: absolute;
+  bottom: 0.4rem;
+  left: 0.4rem;
+}
+
+@media (min-width: 992px) {
+  .course-duration {
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .schedule-time {
+    font-size: 1.8rem;
+  }
+
+  .course-item {
+    background-color: var(--light-blue);
+    /* background-color: goldenrod; */
+    height: 13rem;
+    min-width: 25rem;
+
+    border-radius: 20px;
+    margin-right: 2rem;
+  }
+
+  .course-list {
+    min-height: 15rem;
+    margin: 1.2rem;
+    padding: 0.5rem;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+  }
+
+  .category-icon {
+    position: absolute;
+    right: 0;
+    bottom: 1rem;
+  }
+
+  .course-title {
+    top: 1rem;
+    left: 1rem;
+  }
+}
