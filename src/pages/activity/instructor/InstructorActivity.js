@@ -19,6 +19,12 @@ function InstrcutorActivity(props) {
   const history = useHistory();
   const [courseList, setCourseList] = useState([]);
   const [categories, setCategories] = useState([]);
+
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState(1);
+  const [image, setImage] = useState("");
+  const [description, setDescription] = useState("");
+
   const { user } = props.authReducer;
 
   useEffect(() => {
@@ -56,6 +62,40 @@ function InstrcutorActivity(props) {
         );
       });
   }, [user]);
+
+  function createCourseHandler() {
+    let formData = new FormData();
+    formData.append("name", name);
+    formData.append("category", category);
+    formData.append("image", image);
+    formData.append("description", description);
+    formData.append("level", 1);
+    formData.append("start_date", "2021-04-20");
+    formData.append("session_start", "09:00:00");
+    formData.append("duration", "6000000");
+    formData.append("day", 3);
+    axios
+      .post(`${BASE_URL}/v1/courses`, formData, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        return toast(res.data.message, { type: "success" });
+      })
+      .catch((err) => {
+        return toast(
+          err?.response?.data?.message ||
+            err.message ||
+            "internal server error",
+          {
+            type: "error",
+          }
+        );
+      });
+    console.log(formData, name, category, image);
+  }
 
   return (
     <div className="main-container">
@@ -133,12 +173,13 @@ function InstrcutorActivity(props) {
                     type="text"
                     className={"activity-input w-50"}
                     placeholder={"Your class name"}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
 
                 <div className="form-row">
                   Category :
-                  <select name="" id="">
+                  <select onChange={(e) => setCategory(e.target.value)}>
                     {categories.map((category) => (
                       <option value={category.id}>{category.name}</option>
                     ))}
@@ -146,7 +187,12 @@ function InstrcutorActivity(props) {
                 </div>
                 <div className="form-row">
                   Course Image :
-                  <input type="file" name="" id="" />
+                  <input
+                    type="file"
+                    name=""
+                    id=""
+                    onChange={(e) => setImage(e.target.files[0])}
+                  />
                 </div>
               </div>
               <div className={"form-side col-12 col-lg-7"}>
@@ -180,9 +226,15 @@ function InstrcutorActivity(props) {
                 </div>
                 <div className="d-flex form-row">
                   Schedule :{" "}
-                  <select name="" id="">
-                    <option value="mo">Monday</option>
-                    <option value="fr">Friday</option>
+                  <select onChange={(e) => console.log(e)}>
+                    <option value="0">Sunday</option>
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                    <option value="6">Saturday</option>
+                    <option value="7">Sunday</option>
                   </select>
                   <div className={"form-row w-50 mx-2"}>
                     <input
@@ -212,11 +264,14 @@ function InstrcutorActivity(props) {
               data="<p>Class Description!</p>"
               onChange={(event, editor) => {
                 const data = editor.getData();
-                console.log(data);
+                setDescription(data);
               }}
             />
             <div className="button-create-class">
-              <button className={"btn btn-register my-1 create-class"}>
+              <button
+                className={"btn btn-register my-1 create-class"}
+                onClick={() => createCourseHandler()}
+              >
                 Create
               </button>
             </div>
