@@ -10,6 +10,7 @@ import Activity from "./pages/activity/Activity";
 import MyClass from "./pages/activity/student/MyClass";
 import ClassDetail from "./pages/activity/ClassDetail";
 import Profile from "./pages/profile/Profile";
+import Register from "./pages/register/Register";
 
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route path="/forgot">
           <Forgot />
+        </Route>
+        <Route path="/register">
+          <Register />
         </Route>
         <PrivateRoute path="/dashboard">
           <Dashboard />

@@ -1,0 +1,352 @@
+/* Login Page */
+
+.container {
+  height: 100vh;
+}
+
+.register-container {
+  /* height: 100vh; */
+  padding-bottom: 10%;
+}
+
+.register-container h1 {
+  font-family: Kanit;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 500;
+  color: rgba(1, 6, 32, 1);
+  margin-bottom: 10%;
+}
+
+.form-container {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+}
+
+.password-match {
+  position: relative;
+  top: 0.3rem;
+  left: 1rem;
+  font-family: Roboto;
+  font-size: 0.625rem;
+  color: rgba(14, 170, 0, 1);
+  font-style: normal;
+  font-weight: 400;
+  align-self: flex-start;
+}
+
+.password-no-match {
+  position: relative;
+  top: 0.3rem;
+  left: 1rem;
+  font-family: Roboto;
+  font-size: 0.625rem;
+  color: red;
+  font-style: normal;
+  font-weight: 400;
+  align-self: flex-start;
+}
+
+.form-container input {
+  font-family: Roboto;
+  outline: none;
+  height: 2.5rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  background: #ffffff;
+  border: 1px solid #ada9bb;
+  border-radius: 7px;
+}
+
+.form-container input::placeholder {
+  font-size: 0.8rem;
+}
+
+.form-container label {
+  visibility: visible;
+  position: absolute;
+  top: -0.7rem;
+  left: 0.7rem;
+  font-family: Kanit;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  color: rgba(173, 169, 187, 1);
+  background-color: transparent;
+}
+
+.form-container .eye-icon {
+  position: absolute;
+  height: 1.5rem;
+  background-color: transparent;
+  right: 0.5rem;
+  top: 0.5rem;
+  cursor: pointer;
+}
+
+.form-container input:placeholder-shown + label {
+  visibility: hidden;
+}
+
+.register-container .forgot-password {
+  font-family: Roboto;
+  font-size: 0.8rem; /* 14px */
+  font-style: normal;
+  font-weight: 500;
+  text-align: right;
+  margin-top: 2%;
+  color: black;
+}
+
+.register-container .btn-container {
+  width: 100%;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-container .btn-container .btn-login {
+  cursor: pointer;
+  height: 2.5rem;
+  font-size: 1rem;
+  width: 100%;
+  background-color: var(--blue);
+  color: white;
+  border-radius: 7px;
+  text-align: center;
+  font-family: Kanit;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-container .btn-container .btn-login:hover {
+  background-color: var(--dark-blue);
+}
+
+.register-container .btn-container .btn-google {
+  cursor: pointer;
+  margin-top: 3%;
+  font-family: Kanit;
+  height: 2.5rem;
+  font-size: 0.8rem;
+  width: 100%;
+  background-color: rgba(0, 13, 79, 0.08);
+  color: black;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-container .btn-container .btn-google:hover {
+  background-color: rgba(0, 13, 79, 0.125);
+}
+
+.register-container .btn-container .btn-google img {
+  background-color: transparent;
+  height: 80%;
+  margin: 0 0.5rem;
+}
+
+.register-container .new-user {
+  position: absolute;
+  background-color: transparent;
+  bottom: 5%;
+  right: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: Kanit;
+  font-size: 0.825rem;
+  font-style: normal;
+  font-weight: 500;
+  color: #ada9bb;
+  text-decoration: none;
+}
+
+.register-container .new-user span {
+  font-family: Roboto;
+  font-size: 0.825rem;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--blue);
+  background-color: transparent;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .register-container {
+    padding: 4.5%;
+  }
+  .register-container .new-user {
+    margin-top: 10%;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .form-container input {
+    height: 3rem;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+
+  .form-container input::placeholder {
+    font-size: 1rem;
+  }
+
+  .form-container label {
+    top: -0.825rem;
+    left: 1rem;
+    font-size: 1rem;
+  }
+
+  .form-container .eye-icon {
+    height: 2rem;
+    background-color: transparent;
+    right: 0.5rem;
+    top: 0.5rem;
+    cursor: pointer;
+  }
+
+  .register-container .btn-container {
+    margin-top: 7%;
+  }
+
+  .register-container .new-user {
+    /* margin-top: 30%; */
+    bottom: 3%;
+  }
+
+  .password-match {
+    transform: scale(1.2);
+    left: 2rem;
+  }
+
+  .password-no-match {
+    transform: scale(1.2);
+    left: 2rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+/* 1440 up devices */
+@media (min-width: 1440px) {
+  /* .register-container h1 {
+    margin-bottom: 30%;
+  } */
+  .form-container input {
+    height: 4rem;
+    padding: 1rem 1.4rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .form-container input::placeholder {
+    font-size: 1.25rem;
+  }
+
+  .register-container .forgot-password {
+    font-family: Roboto;
+    font-size: 1rem; /* 14px */
+    font-style: normal;
+    font-weight: 500;
+    text-align: right;
+    margin-top: 2%;
+  }
+
+  .form-container label {
+    top: -1rem;
+    left: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .form-container .eye-icon {
+    height: 2.5rem;
+    background-color: transparent;
+    right: 0.5rem;
+    top: 0.7rem;
+    cursor: pointer;
+  }
+
+  .register-container .btn-container {
+    width: 100%;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .register-container .btn-container .btn-login {
+    cursor: pointer;
+    height: 4rem;
+    font-size: 1.5rem;
+    width: 100%;
+    background-color: var(--blue);
+    color: white;
+    border-radius: 7px;
+    text-align: center;
+    font-family: Kanit;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .register-container .btn-container .btn-login:hover {
+    background-color: var(--dark-blue);
+  }
+
+  .register-container .btn-container .btn-google {
+    cursor: pointer;
+    margin-top: 3%;
+    font-family: Kanit;
+    height: 4rem;
+    font-size: 1.2rem;
+    width: 100%;
+    background-color: rgba(0, 13, 79, 0.08);
+    color: black;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .register-container .btn-container .btn-google:hover {
+    background-color: rgba(0, 13, 79, 0.125);
+  }
+
+  .register-container .btn-container .btn-google img {
+    background-color: transparent;
+    height: 80%;
+    margin: 0 0.5rem;
+  }
+
+  .register-container .new-user {
+    margin-top: 30%;
+    font-family: Kanit;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    color: #ada9bb;
+  }
+
+  .register-container .new-user span {
+    font-family: Roboto;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--blue);
+  }
+}
