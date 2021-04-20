@@ -1,3 +1,10 @@
+import { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import axios from "axios";
+import { toast } from "react-toastify";
+
+import { BASE_URL } from "../../constant";
+
 import DashboardNews from "../../components/dashboard/DashboardNews";
 import ScheduleDate from "../../components/dashboard/ScheduleDate";
 import ScheduleItem from "../../components/dashboard/fasilitator/ScheduleItem";
@@ -6,23 +13,47 @@ import "./DashboardSchedule.css";
 import classes from "./Instructor.module.css";
 
 function Instructor(props) {
-  const courseList = [
-    {
-      title: "Introduction to Banking Finance",
-      duration: "100 minutes",
-      categoryIcon: "/assets/images/icons/finance-category.svg",
-    },
-    {
-      title: "Trigonometry",
-      duration: "50 minutes",
-      categoryIcon: "/assets/images/icons/finance-category.svg",
-    },
-    {
-      title: "Trigonometry",
-      duration: "50 minutes",
-      categoryIcon: "/assets/images/icons/finance-category.svg",
-    },
-  ];
+  const { user } = props.authReducer;
+  const [courseList, setCourseList] = useState([]);
+
+  // const courseList = [
+  //   {
+  //     title: "Introduction to Banking Finance",
+  //     duration: "100 minutes",
+  //     categoryIcon: "/assets/images/icons/finance-category.svg",
+  //   },
+  //   {
+  //     title: "Trigonometry",
+  //     duration: "50 minutes",
+  //     categoryIcon: "/assets/images/icons/finance-category.svg",
+  //   },
+  //   {
+  //     title: "Trigonometry",
+  //     duration: "50 minutes",
+  //     categoryIcon: "/assets/images/icons/finance-category.svg",
+  //   },
+  // ];
+
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}/v1/dashboard/2021-03-29`, {
+        headers: { Authorization: `Bearer ${user.token}` },
+      })
+      .then((res) => {
+        setCourseList(res.data.data);
+      })
+      .catch((err) =>
+        toast(
+          err?.response?.data?.message ||
+            err.message ||
+            "internal server error",
+          {
+            type: "error",
+          }
+        )
+      );
+  }, [user]);
+
   return (
     <>
       <DashboardNews />
@@ -50,4 +81,11 @@ function Instructor(props) {
   );
 }
 
-export default Instructor;
+const mapStateToProps = (state) => {
+  return {
+    authReducer: state.authReducer,
+  };
+};
+
+const ConnectedInstructor = connect(mapStateToProps)(Instructor);
+export default ConnectedInstructor;
