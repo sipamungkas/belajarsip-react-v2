@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SET_ERROR, SET_LOADING, SET_USER } from "./actionTypes";
+import { LOGOUT, SET_ERROR, SET_LOADING, SET_USER } from "./actionTypes";
 import { BASE_URL } from "../../constant";
 
 export function loginHandler(username, password) {
@@ -22,5 +22,11 @@ export function loginHandler(username, password) {
           payload: err,
         });
       });
+  };
+}
+
+export function logoutHandler() {
+  return (dispatch) => {
+    dispatch({ type: LOGOUT });
   };
 }

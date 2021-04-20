@@ -1,4 +1,9 @@
-import { SET_USER, SET_ERROR, SET_LOADING } from "../actions/actionTypes";
+import {
+  SET_USER,
+  SET_ERROR,
+  SET_LOADING,
+  LOGOUT,
+} from "../actions/actionTypes";
 
 const initialState = {
   // user: {
@@ -43,6 +48,12 @@ export const authReducer = (state = initialState, action) => {
         isLoggedIn: false,
         isError: true,
         isLoading: false,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isLoggedIn: false,
+        user: {},
       };
     default:
       return state;

@@ -3,6 +3,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { toggleMessage } from "../../redux/actions/sidebar";
+import { logoutHandler } from "../../redux/actions/auth";
 import "./Sidebar.css";
 
 function Sidebar(props) {
@@ -127,14 +128,22 @@ function Sidebar(props) {
               </svg>
               Help
             </Link>
-            <Link to="/" className="menu-link">
+            {/* <Link to="/" className="menu-link">
               <img
                 src="/assets/images/icons/logout-icon.svg"
                 className="menu-icon text-danger"
                 alt="Logout Icon"
               />
               <span className="text-danger">Logout</span>
-            </Link>
+            </Link> */}
+            <div className="menu-link" onClick={() => props.onLogoutHandler()}>
+              <img
+                src="/assets/images/icons/logout-icon.svg"
+                className="menu-icon text-danger"
+                alt="Logout Icon"
+              />
+              <span className="text-danger">Logout</span>
+            </div>
             <div className={"empty-menu-link"}></div>
           </div>
         </aside>
@@ -152,6 +161,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onShowMessage: (value) => dispatch(toggleMessage(value)),
+    onLogoutHandler: () => dispatch(logoutHandler()),
   };
 };
 
