@@ -1,3 +1,10 @@
+import { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import axios from "axios";
+import { toast } from "react-toastify";
+
+import { BASE_URL } from "../../../constant";
+
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
@@ -8,37 +15,47 @@ import ActivityTitle from "../../../components/activity/ActivityTitle";
 import MyClassItem from "../../../components/activity/instructor/MyClassItem";
 import { useHistory } from "react-router";
 
-export default function InstrcutorActivity(props) {
+function InstrcutorActivity(props) {
   const history = useHistory();
-  const courseList = [
-    {
-      id: 1,
-      title: "Front-end fundamentals",
-      category: "Software",
-      description: "Learn the fundamentals of front end...",
-      day: "Friday",
-      session_start: "09:00:00",
-      students: 100,
-    },
-    {
-      id: 2,
-      title: "HTML for Beginners",
-      category: "Software",
-      description: "HTML from scratch",
-      day: "Friday",
-      session_start: "09:00:00",
-      students: 100,
-    },
-    {
-      id: 3,
-      title: "History of Europe",
-      category: "History",
-      description: "The history of Europe concerns itself...",
-      day: "Friday",
-      session_start: "09:00:00",
-      students: 100,
-    },
-  ];
+  const [courseList, setCourseList] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const { user } = props.authReducer;
+
+  useEffect(() => {
+    axios(`${BASE_URL}/v1/courses/my-class?limit=3`, {
+      headers: { Authorization: `Bearer ${user.token}` },
+    })
+      .then((res) => {
+        setCourseList(res.data.data);
+      })
+      .catch((err) => {
+        return toast(
+          err?.response?.data?.message ||
+            err.message ||
+            "internal server error",
+          {
+            type: "error",
+          }
+        );
+      });
+
+    axios(`${BASE_URL}/v1/categories`, {
+      headers: { Authorization: `Bearer ${user.token}` },
+    })
+      .then((res) => {
+        setCategories(res.data.data);
+      })
+      .catch((err) => {
+        return toast(
+          err?.response?.data?.message ||
+            err.message ||
+            "internal server error",
+          {
+            type: "error",
+          }
+        );
+      });
+  }, [user]);
 
   return (
     <div className="main-container">
@@ -120,11 +137,16 @@ export default function InstrcutorActivity(props) {
                 </div>
 
                 <div className="form-row">
-                  Category :{" "}
+                  Category :
                   <select name="" id="">
-                    <option value="software">software</option>
-                    <option value="software">history</option>
+                    {categories.map((category) => (
+                      <option value={category.id}>{category.name}</option>
+                    ))}
                   </select>
+                </div>
+                <div className="form-row">
+                  Course Image :
+                  <input type="file" name="" id="" />
                 </div>
               </div>
               <div className={"form-side col-12 col-lg-7"}>
@@ -177,7 +199,7 @@ export default function InstrcutorActivity(props) {
                 </div>
               </div>
             </div>
-            Description:
+
             {/* <textarea
               className={"activity-text-area"}
               name=""
@@ -187,7 +209,7 @@ export default function InstrcutorActivity(props) {
             ></textarea> */}
             <CKEditor
               editor={ClassicEditor}
-              data="<p>Hello from CKEditor 5!</p>"
+              data="<p>Class Description!</p>"
               onChange={(event, editor) => {
                 const data = editor.getData();
                 console.log(data);
@@ -204,3 +226,14 @@ export default function InstrcutorActivity(props) {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    authReducer: state.authReducer,
+  };
+};
+
+const ConnectedInstrcutorActivity = connect(mapStateToProps)(
+  InstrcutorActivity
+);
+export default ConnectedInstrcutorActivity;
