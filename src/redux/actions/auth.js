@@ -15,7 +15,6 @@ export function loginHandler(username, password) {
         password,
       })
       .then((res) => {
-        console.log(res.data.data);
         dispatch({ type: SET_USER, payload: res.data.data });
       })
       .catch((err) => {

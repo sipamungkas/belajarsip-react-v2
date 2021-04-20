@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import { BASE_URL } from "../../../constant";
+// import { BASE_URL } from "../../../constant";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -15,7 +15,9 @@ import ActivityTitle from "../../../components/activity/ActivityTitle";
 import MyClassItem from "../../../components/activity/instructor/MyClassItem";
 import { useHistory } from "react-router";
 
-function InstrcutorActivity(props) {
+const BASE_URL = process.env.REACT_APP_API;
+
+function InstructorActivity(props) {
   const history = useHistory();
   const [courseList, setCourseList] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -181,7 +183,9 @@ function InstrcutorActivity(props) {
                   Category :
                   <select onChange={(e) => setCategory(e.target.value)}>
                     {categories.map((category) => (
-                      <option value={category.id}>{category.name}</option>
+                      <option value={category.id} key={category.id}>
+                        {category.name}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -288,7 +292,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const ConnectedInstrcutorActivity = connect(mapStateToProps)(
-  InstrcutorActivity
+const ConnectedInstructorActivity = connect(mapStateToProps)(
+  InstructorActivity
 );
-export default ConnectedInstrcutorActivity;
+export default ConnectedInstructorActivity;
