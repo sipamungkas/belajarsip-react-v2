@@ -33,6 +33,11 @@ class Activity extends Component {
   };
 
   componentDidMount() {
+    this.getMyClass();
+    this.getNewClass();
+  }
+
+  getMyClass() {
     const { user } = this.props.authReducer;
     axios(`${BASE_URL}/v1/courses/my-class?limit=3`, {
       headers: { Authorization: `Bearer ${user.token}` },
@@ -50,7 +55,6 @@ class Activity extends Component {
           }
         );
       });
-    this.getNewClass();
   }
 
   getNewClass() {
@@ -109,6 +113,35 @@ class Activity extends Component {
         }&limit=5`
       );
     }
+  }
+
+  registerHandler(courseId) {
+    const { user } = this.props.authReducer;
+    axios
+      .post(
+        `${BASE_URL}/v1/courses/register`,
+        { course_id: courseId },
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        this.getMyClass();
+        this.getNewClass();
+        return toast(res.data.message, { type: "success" });
+      })
+      .catch((err) => {
+        return toast(
+          err?.response?.data?.message ||
+            err.message ||
+            "internal server error",
+          {
+            type: "error",
+          }
+        );
+      });
   }
 
   render() {
@@ -263,7 +296,11 @@ class Activity extends Component {
                 </thead>
                 <tbody>
                   {newCourseList.map((course, index) => (
-                    <NewClassItem key={index} course={course} />
+                    <NewClassItem
+                      key={index}
+                      course={course}
+                      onRegister={() => this.registerHandler(course.id)}
+                    />
                   ))}
                 </tbody>
               </table>

@@ -1,159 +1,209 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 import ActivityTitle from "../../../components/activity/ActivityTitle";
 import ClassDescription from "../../../components/activity/ClassDescription";
 import ClassProgress from "../../../components/activity/ClassProgress";
 import StudentList from "../../../components/activity/instructor/StudentList";
 
-export default function MyClassDetailFasilitator(props) {
+const BASE_URL = process.env.REACT_APP_API;
+
+function MyClassDetailFasilitator(props) {
   const [tabIndex, setTabIndex] = useState(1);
   const [showStudentInfo, setShowStudentInfo] = useState(false);
+  const [course, setCourse] = useState({});
+  const [students, setStudents] = useState([]);
+  const { user } = props.authReducer;
   const { id } = useParams();
-  const students = [
-    { name: "Deddy Corbuzer", avatar: "avatar-1.png" },
-    { name: "Eden Hazard", avatar: "avatar-1.png" },
-    { name: "Isyana Sarasvati", avatar: "avatar-1.png" },
-    { name: "Nissa Sabyan", avatar: "avatar-1.png" },
-    { name: "Peppy", avatar: "avatar-1.png" },
-  ];
-  const courseList = [
-    {
-      id: 1,
-      name: "Front-end fundamentals",
-      category: "Software",
-      description: "Learn the fundamentals of front end...",
-      progress: "90",
-      status: "completed",
-      score: 88,
-      cover: "class-detail-cover.png",
-      progressList: [
-        {
-          title: "HTML Essential Training",
-          status: "ongoing",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-        {
-          title: "HTML Essential Training",
-          status: "completed",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-        {
-          title: "HTML Essential Training",
-          status: "completed",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-        {
-          title: "HTML Essential Training",
-          status: "completed",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-      ],
-      members: [
-        { name: "Deddy Corbuzer", avatar: "avatar-1.png" },
-        { name: "Eden Hazard", avatar: "avatar-1.png" },
-        { name: "Isyana Sarasvati", avatar: "avatar-1.png" },
-        { name: "Nissa Sabyan", avatar: "avatar-1.png" },
-        { name: "Peppy", avatar: "avatar-1.png" },
-      ],
-    },
 
-    {
-      id: 2,
-      name: "Front-end fundamentals",
-      category: "Software",
-      description: "Learn the fundamentals of front end...",
-      progress: "80",
-      status: "ongoing",
-      score: 100,
-      cover: "class-detail-cover.png",
-      progressList: [
-        {
-          title: "HTML Essential Training",
-          status: "ongoing",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-        {
-          title: "HTML Essential Training",
-          status: "completed",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-        {
-          title: "HTML Essential Training",
-          status: "completed",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-        {
-          title: "HTML Essential Training",
-          status: "completed",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-      ],
-      members: [
-        { name: "Deddy Corbuzer", avatar: "avatar-1.png" },
-        { name: "Eden Hazard", avatar: "avatar-1.png" },
-        { name: "Isyana Sarasvati", avatar: "avatar-1.png" },
-        { name: "Nissa Sabyan", avatar: "avatar-1.png" },
-        { name: "Peppy", avatar: "avatar-1.png" },
-      ],
-    },
+  const history = useHistory();
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}/v1/courses/${id}`, {
+        headers: { Authorization: `Bearer ${user.token}` },
+      })
+      .then((res) => {
+        if (!res.data.data) return history.push("/activity/my-class");
+        setCourse(res.data.data);
+      })
+      .catch((err) =>
+        toast(
+          err?.response?.data?.message ||
+            err.message ||
+            "internal server error",
+          {
+            type: "error",
+          }
+        )
+      );
 
-    {
-      id: 3,
-      name: "Front-end fundamentals",
-      category: "Software",
-      description: "Learn the fundamentals of front end...",
-      progress: "80",
-      status: "ongoing",
-      score: 88,
-      cover: "class-detail-cover.png",
-      progressList: [
-        {
-          title: "HTML Essential Training",
-          status: "ongoing",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-        {
-          title: "HTML Essential Training",
-          status: "completed",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-        {
-          title: "HTML Essential Training",
-          status: "completed",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-        {
-          title: "HTML Essential Training",
-          status: "completed",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-      ],
-      members: [
-        { name: "Deddy Corbuzer", avatar: "avatar-1.png" },
-        { name: "Eden Hazard", avatar: "avatar-1.png" },
-        { name: "Isyana Sarasvati", avatar: "avatar-1.png" },
-        { name: "Nissa Sabyan", avatar: "avatar-1.png" },
-        { name: "Peppy" },
-      ],
-    },
-  ];
+    axios
+      .get(`${BASE_URL}/v1/courses/${id}/students`, {
+        headers: { Authorization: `Bearer ${user.token}` },
+      })
+      .then((res) => {
+        // if (!res.data.data) return history.push("/activity/my-class");
+        setStudents(res.data.data);
+      })
+      .catch((err) =>
+        toast(
+          err?.response?.data?.message ||
+            err.message ||
+            "internal server error",
+          {
+            type: "error",
+          }
+        )
+      );
+  }, [id, user, history]);
+
+  // const students = [
+  //   { name: "Deddy Corbuzer", avatar: "avatar-1.png" },
+  //   { name: "Eden Hazard", avatar: "avatar-1.png" },
+  //   { name: "Isyana Sarasvati", avatar: "avatar-1.png" },
+  //   { name: "Nissa Sabyan", avatar: "avatar-1.png" },
+  //   { name: "Peppy", avatar: "avatar-1.png" },
+  // ];
+  // const courseList = [
+  //   {
+  //     id: 1,
+  //     name: "Front-end fundamentals",
+  //     category: "Software",
+  //     description: "Learn the fundamentals of front end...",
+  //     progress: "90",
+  //     status: "completed",
+  //     score: 88,
+  //     cover: "class-detail-cover.png",
+  //     progressList: [
+  //       {
+  //         title: "HTML Essential Training",
+  //         status: "ongoing",
+  //         score: 88,
+  //         schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+  //       },
+  //       {
+  //         title: "HTML Essential Training",
+  //         status: "completed",
+  //         score: 88,
+  //         schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+  //       },
+  //       {
+  //         title: "HTML Essential Training",
+  //         status: "completed",
+  //         score: 88,
+  //         schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+  //       },
+  //       {
+  //         title: "HTML Essential Training",
+  //         status: "completed",
+  //         score: 88,
+  //         schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+  //       },
+  //     ],
+  //     members: [
+  //       { name: "Deddy Corbuzer", avatar: "avatar-1.png" },
+  //       { name: "Eden Hazard", avatar: "avatar-1.png" },
+  //       { name: "Isyana Sarasvati", avatar: "avatar-1.png" },
+  //       { name: "Nissa Sabyan", avatar: "avatar-1.png" },
+  //       { name: "Peppy", avatar: "avatar-1.png" },
+  //     ],
+  //   },
+
+  //   {
+  //     id: 2,
+  //     name: "Front-end fundamentals",
+  //     category: "Software",
+  //     description: "Learn the fundamentals of front end...",
+  //     progress: "80",
+  //     status: "ongoing",
+  //     score: 100,
+  //     cover: "class-detail-cover.png",
+  //     progressList: [
+  //       {
+  //         title: "HTML Essential Training",
+  //         status: "ongoing",
+  //         score: 88,
+  //         schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+  //       },
+  //       {
+  //         title: "HTML Essential Training",
+  //         status: "completed",
+  //         score: 88,
+  //         schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+  //       },
+  //       {
+  //         title: "HTML Essential Training",
+  //         status: "completed",
+  //         score: 88,
+  //         schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+  //       },
+  //       {
+  //         title: "HTML Essential Training",
+  //         status: "completed",
+  //         score: 88,
+  //         schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+  //       },
+  //     ],
+  //     members: [
+  //       { name: "Deddy Corbuzer", avatar: "avatar-1.png" },
+  //       { name: "Eden Hazard", avatar: "avatar-1.png" },
+  //       { name: "Isyana Sarasvati", avatar: "avatar-1.png" },
+  //       { name: "Nissa Sabyan", avatar: "avatar-1.png" },
+  //       { name: "Peppy", avatar: "avatar-1.png" },
+  //     ],
+  //   },
+
+  //   {
+  //     id: 3,
+  //     name: "Front-end fundamentals",
+  //     category: "Software",
+  //     description: "Learn the fundamentals of front end...",
+  //     progress: "80",
+  //     status: "ongoing",
+  //     score: 88,
+  //     cover: "class-detail-cover.png",
+  //     progressList: [
+  //       {
+  //         title: "HTML Essential Training",
+  //         status: "ongoing",
+  //         score: 88,
+  //         schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+  //       },
+  //       {
+  //         title: "HTML Essential Training",
+  //         status: "completed",
+  //         score: 88,
+  //         schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+  //       },
+  //       {
+  //         title: "HTML Essential Training",
+  //         status: "completed",
+  //         score: 88,
+  //         schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+  //       },
+  //       {
+  //         title: "HTML Essential Training",
+  //         status: "completed",
+  //         score: 88,
+  //         schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+  //       },
+  //     ],
+  //     members: [
+  //       { name: "Deddy Corbuzer", avatar: "avatar-1.png" },
+  //       { name: "Eden Hazard", avatar: "avatar-1.png" },
+  //       { name: "Isyana Sarasvati", avatar: "avatar-1.png" },
+  //       { name: "Nissa Sabyan", avatar: "avatar-1.png" },
+  //       { name: "Peppy" },
+  //     ],
+  //   },
+  // ];
 
   const renderTabContent = (course) => {
     if (tabIndex === 2) {
-      return <ClassProgress progressList={course.progressList} />;
+      return <ClassProgress />;
     }
     if (tabIndex === 3) {
       return "3";
@@ -192,7 +242,7 @@ export default function MyClassDetailFasilitator(props) {
     setTabIndex(tabIndex);
   };
 
-  const course = courseList.find((data) => data.id === parseInt(id));
+  // const course = courseList.find((data) => data.id === parseInt(id));
   return (
     <div className="main-container">
       <ActivityTitle title={course?.name ?? "Course Not Found"} back={true} />
@@ -341,3 +391,12 @@ export default function MyClassDetailFasilitator(props) {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    authReducer: state.authReducer,
+  };
+};
+
+const ConnectedClassDetail = connect(mapStateToProps)(MyClassDetailFasilitator);
+export default ConnectedClassDetail;

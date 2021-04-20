@@ -5,7 +5,7 @@ export default function StudentList(props) {
 
   const renderMember = () => {
     if (!students || students.length <= 0) {
-      return "No member yet";
+      return "No student yet";
     }
     return students.map((student, index) => (
       <StudentItem
