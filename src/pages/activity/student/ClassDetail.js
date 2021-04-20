@@ -19,32 +19,7 @@ export default function ClassDetail(props) {
       status: "completed",
       score: 88,
       cover: "class-detail-cover.png",
-      progressList: [
-        {
-          title: "HTML Essential Training",
-          status: "ongoing",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-        {
-          title: "HTML Essential Training",
-          status: "completed",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-        {
-          title: "HTML Essential Training",
-          status: "completed",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-        {
-          title: "HTML Essential Training",
-          status: "completed",
-          score: 88,
-          schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
-        },
-      ],
+
       descriptionItem: `<h3>Description</h3>
       <br />
       <p>
@@ -123,7 +98,7 @@ export default function ClassDetail(props) {
 
   const renderTabContent = (course) => {
     if (tabIndex === 2) {
-      return <ClassProgress progressList={course.progressList} />;
+      return <ClassProgress />;
     }
     if (tabIndex === 3) {
       return "3";

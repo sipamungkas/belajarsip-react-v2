@@ -26,7 +26,7 @@ class Activity extends Component {
 
   searchHandler = () => {
     this.props.history.push(
-      `/activity?search=${this.state.searchValue}&sort=${this.state.sort}`
+      `/activity?search=${this.state.searchValue}&sort=${this.state.sort}&limit=5`
     );
   };
 
@@ -93,7 +93,7 @@ class Activity extends Component {
       this.props.history.push(
         `/activity?search=${searchValue}&sort=${sort}&page=${
           Number(info.current_page) + 1
-        }`
+        }&limit=5`
       );
     }
   }
@@ -104,7 +104,7 @@ class Activity extends Component {
       this.props.history.push(
         `/activity?search=${searchValue}&sort=${sort}&page=${
           Number(info.current_page) - 1
-        }`
+        }&limit=5`
       );
     }
   }

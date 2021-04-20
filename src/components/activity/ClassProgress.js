@@ -1,7 +1,32 @@
 import React from "react";
 
 export default function ClassProgress(props) {
-  const { progressList } = props;
+  const progressList = [
+    {
+      title: "HTML Essential Training",
+      status: "ongoing",
+      score: 88,
+      schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+    },
+    {
+      title: "HTML Essential Training",
+      status: "completed",
+      score: 88,
+      schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+    },
+    {
+      title: "HTML Essential Training",
+      status: "completed",
+      score: 88,
+      schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+    },
+    {
+      title: "HTML Essential Training",
+      status: "completed",
+      score: 88,
+      schedule: { date: "Friday, 6 November 2020", time: "08.00 - 09.40" },
+    },
+  ];
   if (!progressList) return <>No Content</>;
   return (
     <div className="card bg-white border-0 p-0 rounded-10px">
