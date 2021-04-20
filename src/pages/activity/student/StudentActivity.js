@@ -8,8 +8,10 @@ import MyClassItem from "../../../components/activity/MyClassItem";
 import NewClassItem from "../../../components/activity/NewClassItem";
 import ActivityTitle from "../../../components/activity/ActivityTitle";
 
-import { BASE_URL } from "../../../constant";
+// import { BASE_URL } from "../../../constant";
 import { toast } from "react-toastify";
+
+const BASE_URL = process.env.REACT_APP_API;
 
 class Activity extends Component {
   constructor(props) {

@@ -4,9 +4,11 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 
-import { BASE_URL } from "../../../constant";
+// import { BASE_URL } from "../../../constant";
 import MyClassItem from "../../../components/activity/MyClassItem";
 import ActivityTitle from "../../../components/activity/ActivityTitle";
+
+const BASE_URL = process.env.REACT_APP_API;
 
 class MyClass extends Component {
   constructor() {

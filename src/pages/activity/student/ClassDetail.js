@@ -4,11 +4,13 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import { BASE_URL } from "../../../constant";
+// import { BASE_URL } from "../../../constant";
 
 import ActivityTitle from "../../../components/activity/ActivityTitle";
 import ClassDescription from "../../../components/activity/ClassDescription";
 import ClassProgress from "../../../components/activity/ClassProgress";
+
+const BASE_URL = process.env.REACT_APP_API;
 
 function ClassDetail(props) {
   const [tabIndex, setTabIndex] = useState(1);
