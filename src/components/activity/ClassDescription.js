@@ -39,7 +39,7 @@ export default function ClassDescription(props) {
     <div className="course-description">
       {/* {course.descriptionItem || "No Description about this course"} */}
       <h3>Description</h3>
-      {ReactHTMLParser(data)}
+      {ReactHTMLParser(props.course?.description || data)}
     </div>
   );
 }
