@@ -8,7 +8,7 @@ main section .card {
 }
 
 main section .card .title {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 700;
   padding: 0.6rem 1rem;
@@ -99,7 +99,7 @@ main .fab-message {
   }
 
   main section .card .title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
     padding: 1.2rem 1.5rem;

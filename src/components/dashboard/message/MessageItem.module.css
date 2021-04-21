@@ -18,14 +18,14 @@
 
 .sender-name {
   font-family: Kanit;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-style: normal;
   font-weight: 400;
 }
 .message-content,
 .message-timestamp {
   font-family: Kanit;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-style: normal;
   font-weight: 400;
   color: rgba(120, 120, 120, 1);
@@ -57,11 +57,11 @@
   }
 
   .sender-name {
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     width: 90%;
   }
   .message-content,
   .message-timestamp {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
   }
 }
