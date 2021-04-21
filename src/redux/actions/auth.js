@@ -1,6 +1,8 @@
 import axios from "axios";
 import { LOGOUT, SET_ERROR, SET_LOADING, SET_USER } from "./actionTypes";
-import { BASE_URL } from "../../constant";
+// import { BASE_URL } from "../../constant";
+
+const BASE_URL = process.env.REACT_APP_API;
 
 export function loginHandler(username, password) {
   return (dispatch) => {
@@ -13,7 +15,6 @@ export function loginHandler(username, password) {
         password,
       })
       .then((res) => {
-        console.log(res.data.data);
         dispatch({ type: SET_USER, payload: res.data.data });
       })
       .catch((err) => {

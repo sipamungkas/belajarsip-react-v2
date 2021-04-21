@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import classes from "./NewClassItem.module.css";
 
@@ -15,9 +15,12 @@ export default function NewClassItem(props) {
       <td className={"table-level"}>{course.level ?? "Beginner"}</td>
       <td>{course.price === 0 ? "Free" : `$${course.price}`}</td>
       <td className={classes["table-register"]}>
-        <Link to={"/"} className="badge btn-register">
+        {/* <Link to={"/"} className="badge btn-register">
           Register
-        </Link>{" "}
+        </Link>{" "} */}
+        <div className="badge btn-register" onClick={props.onRegister}>
+          Register
+        </div>
       </td>
       <td>
         <img src="/assets/images/icons/list-icon.svg" alt="list" />

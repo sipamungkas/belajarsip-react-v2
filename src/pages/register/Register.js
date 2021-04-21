@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
-import { BASE_URL } from "../../constant";
+// import { BASE_URL } from "../../constant";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
 import InputForm from "../../components/inputForm/InputForm";
+const BASE_URL = process.env.REACT_APP_API;
 
 export default class Login extends Component {
   constructor() {

@@ -1,0 +1,7 @@
+.container {
+  background-color: #fff;
+  max-height: 16rem;
+  min-height: 50vh;
+  min-width: 50vw;
+  max-width: 20rem;
+}

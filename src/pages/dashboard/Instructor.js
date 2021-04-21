@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import { BASE_URL } from "../../constant";
+// import { BASE_URL } from "../../constant";
 
 import DashboardNews from "../../components/dashboard/DashboardNews";
 import ScheduleDate from "../../components/dashboard/ScheduleDate";
@@ -11,6 +11,8 @@ import ScheduleItem from "../../components/dashboard/fasilitator/ScheduleItem";
 
 import "./DashboardSchedule.css";
 import classes from "./Instructor.module.css";
+
+const BASE_URL = process.env.REACT_APP_API;
 
 function Instructor(props) {
   const { user } = props.authReducer;
