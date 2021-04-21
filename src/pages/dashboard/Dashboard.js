@@ -15,14 +15,6 @@ class Dashboard extends Component {
     };
   }
 
-  setShowMessage = () => {
-    this.setState({ showMessage: !this.state.showMessage });
-  };
-
-  setShowNotification = () => {
-    this.setState({ showNotification: !this.state.showNotification });
-  };
-
   render() {
     const { showMessage } = this.props.sidebarReducer;
     const { user } = this.props.authReducer;
