@@ -1,17 +1,9 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import moment from "moment";
 
 import DateItem from "./DateItem";
 
-export default function DashboardScheduleDate(props) {
+export default function ScheduleDate(props) {
   const { setTabIndex, tab } = props;
-  const [activeDate, setActiveDate] = useState(moment().format("YYYY-MM-DD"));
-  const weekStart = moment().startOf("week");
-  const dateInAWeek = [weekStart];
-  for (let i = 1; i < 7; i++) {
-    dateInAWeek.push(moment().days(i));
-  }
 
   return (
     <section className={"date"}>
@@ -26,13 +18,13 @@ export default function DashboardScheduleDate(props) {
         />
       </div>
       <div className="date-body">
-        {dateInAWeek.map((data) => (
+        {props.dateInAWeek.map((data) => (
           <DateItem
             key={data.format("D")}
             dayName={data.format("ddd")}
             date={data.date()}
-            active={data.format("YYYY-MM-DD") === activeDate}
-            onClick={() => setActiveDate(data.format("YYYY-MM-DD"))}
+            active={data.format("YYYY-MM-DD") === props.activeDate}
+            onClick={() => props.setActiveDate(data.format("YYYY-MM-DD"))}
           />
         ))}
       </div>
