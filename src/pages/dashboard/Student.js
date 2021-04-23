@@ -97,15 +97,17 @@ function Student(props) {
           </section>
         </div>
       </section>
-      <Modal
-        withDangerButton={true}
-        onYesClick={() => {
-          console.log("yes");
-        }}
-        onCancelClick={() => {
-          console.log("NOOOOOO");
-        }}
-      ></Modal>
+      {
+        <Modal
+          withDangerButton={true}
+          onYesClick={() => {
+            console.log("yes");
+          }}
+          onCancelClick={() => {
+            console.log("NOOOOOO");
+          }}
+        ></Modal>
+      }
     </>
   );
 }
