@@ -6,8 +6,11 @@ import { toggleMessage } from "../../redux/actions/sidebar";
 import { logoutHandler } from "../../redux/actions/auth";
 import "./Sidebar.css";
 
+import Modal from "../modal/Modal";
+
 function Sidebar(props) {
   const [show, setShow] = useState(false);
+  const [modal, setModal] = useState(false);
   const isDashboard = useRouteMatch("/dashboard");
   const isActivity = useRouteMatch("/activity");
   const { user } = props.authReducer;
@@ -150,7 +153,7 @@ function Sidebar(props) {
               />
               <span className="text-danger">Logout</span>
             </Link> */}
-            <div className="menu-link" onClick={() => props.onLogoutHandler()}>
+            <div className="menu-link touchable" onClick={() => setModal(true)}>
               <img
                 src="/assets/images/icons/logout-icon.svg"
                 className="menu-icon text-danger"
@@ -162,6 +165,14 @@ function Sidebar(props) {
           </div>
         </aside>
       </div>
+      {modal && (
+        <Modal
+          withDangerButton={true}
+          title="Logout"
+          onYesClick={() => props.onLogoutHandler()}
+          onCancelClick={() => setModal(false)}
+        ></Modal>
+      )}
     </>
   );
 }

@@ -7,7 +7,7 @@
   max-height: 50vh;
   height: 10rem;
   min-height: 20vh;
-  min-width: 50vw;
+  min-width: 80vw;
   max-width: 20rem;
   z-index: 5;
   padding: 1rem 2rem;
@@ -30,4 +30,16 @@
   right: 2rem;
   display: flex;
   flex-direction: row;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-height: 50vh;
+    height: 10rem;
+    min-height: 20vh;
+    min-width: 50vw;
+    max-width: 20rem;
+    /* z-index: 5; */
+    padding: 1rem 2rem;
+  }
 }

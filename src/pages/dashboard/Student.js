@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 import DashboardNews from "../../components/dashboard/DashboardNews";
 import ScheduleDate from "../../components/dashboard/ScheduleDate";
 import ScheduleItem from "../../components/dashboard/student/ScheduleItem";
-import Modal from "../../components/modal/Modal";
 
 import classes from "../../components/dashboard/student/ScheduleItem.module.css";
 
@@ -97,17 +96,6 @@ function Student(props) {
           </section>
         </div>
       </section>
-      {
-        <Modal
-          withDangerButton={true}
-          onYesClick={() => {
-            console.log("yes");
-          }}
-          onCancelClick={() => {
-            console.log("NOOOOOO");
-          }}
-        ></Modal>
-      }
     </>
   );
 }

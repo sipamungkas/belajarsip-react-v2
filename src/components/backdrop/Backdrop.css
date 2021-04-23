@@ -26,8 +26,9 @@ div.backdrop {
 
 @media (min-width: 1440px) {
   div.backdrop {
-    right: calc(27.5% + 1rem);
-    margin: 2% 1%;
+    /* right: calc(27.5% + 1rem); */
+
+    /* margin: 2% 1%; */
     border-radius: 10px;
   }
 }
