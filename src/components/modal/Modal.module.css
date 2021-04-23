@@ -1,7 +1,33 @@
 .container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #fff;
-  max-height: 16rem;
-  min-height: 50vh;
+  max-height: 50vh;
+  height: 10rem;
+  min-height: 20vh;
   min-width: 50vw;
   max-width: 20rem;
+  z-index: 3;
+  padding: 1rem 2rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.body {
+  margin-top: 0.5rem;
+  height: fit-content;
+}
+
+.btn-container {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: row;
 }

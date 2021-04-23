@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import DashboardNews from "../../components/dashboard/DashboardNews";
 import ScheduleDate from "../../components/dashboard/ScheduleDate";
 import ScheduleItem from "../../components/dashboard/student/ScheduleItem";
+import Modal from "../../components/modal/Modal";
 
 import classes from "../../components/dashboard/student/ScheduleItem.module.css";
 
@@ -88,9 +89,6 @@ function Student(props) {
                 courseList={data.courseList}
               />
             ))}
-            {/* <ScheduleItem courseTime={"18:00"} courseList={courseList} />
-            <ScheduleItem courseTime={"11:00"} courseList={courseList2} />
-            <ScheduleItem courseTime={"18:00"} courseList={courseList3} /> */}
             {groupedByTime.length > 0 && (
               <div className={classes["schedule-time"]}>
                 <span>Finish</span>
@@ -99,6 +97,15 @@ function Student(props) {
           </section>
         </div>
       </section>
+      <Modal
+        withDangerButton={true}
+        onYesClick={() => {
+          console.log("yes");
+        }}
+        onCancelClick={() => {
+          console.log("NOOOOOO");
+        }}
+      ></Modal>
     </>
   );
 }
