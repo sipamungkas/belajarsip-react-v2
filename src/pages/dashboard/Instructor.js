@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
+import moment from "moment";
 
 // import { BASE_URL } from "../../constant";
 
@@ -11,13 +12,19 @@ import ScheduleItem from "../../components/dashboard/fasilitator/ScheduleItem";
 
 import "./DashboardSchedule.css";
 import classes from "./Instructor.module.css";
+import scheduleItemClasses from "../../components/dashboard/student/ScheduleItem.module.css";
 
 const BASE_URL = process.env.REACT_APP_API;
 
 function Instructor(props) {
+  const [activeDate, setActiveDate] = useState(moment().format("YYYY-MM-DD"));
   const { user } = props.authReducer;
   const [courseList, setCourseList] = useState([]);
-
+  const weekStart = moment().startOf("week");
+  const dateInAWeek = [weekStart];
+  for (let i = 1; i < 7; i++) {
+    dateInAWeek.push(moment().days(i));
+  }
   // const courseList = [
   //   {
   //     title: "Introduction to Banking Finance",
@@ -38,7 +45,7 @@ function Instructor(props) {
 
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/v1/dashboard/2021-03-29`, {
+      .get(`${BASE_URL}/v1/dashboard/${activeDate}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       })
       .then((res) => {
@@ -54,15 +61,27 @@ function Instructor(props) {
           }
         )
       );
-  }, [user]);
+  }, [user, activeDate]);
 
   return (
     <>
       <DashboardNews />
       <section className={"schedule mt-3"}>
         <div className="card">
-          <ScheduleDate user={props.user} setTabIndex={() => {}} tab={1} />
+          <ScheduleDate
+            setTabIndex={() => {}}
+            tab={1}
+            dateInAWeek={dateInAWeek}
+            activeDate={activeDate}
+            setActiveDate={setActiveDate}
+          />
+
           <section className={"schedule-list"}>
+            {courseList.length === 0 && (
+              <div className={`${scheduleItemClasses["schedule-time"]} m-auto`}>
+                <span>No Schedule</span>
+              </div>
+            )}
             {courseList.map((course, index) => (
               <ScheduleItem key={index} course={course} />
             ))}

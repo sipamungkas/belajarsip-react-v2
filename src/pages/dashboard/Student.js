@@ -59,8 +59,6 @@ function Student(props) {
       });
   }, [activeDate, user]);
 
-  console.log(groupedByTime);
-
   return (
     <>
       <DashboardNews />
